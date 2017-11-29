@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author dongshengzhang
- *
+ * @category 文档生成类
  */
 @Configuration
 @EnableSwagger2

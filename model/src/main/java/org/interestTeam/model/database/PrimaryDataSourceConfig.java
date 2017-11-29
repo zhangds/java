@@ -21,7 +21,7 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 /**
  * @author dongshengzhang
  * @date 2017-11-15
- * 
+ * @category 主数据的自动配置注入
  */
 @Configuration
 @MapperScan(basePackages = "org.interestTeam.model.database.mapper.primarySource", sqlSessionTemplateRef  = "primarySqlSessionTemplate")
