@@ -17,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 /**
  * @author dongshengzhang
@@ -67,6 +68,11 @@ public class PrimaryDataSourceConfig {
 	@Primary
 	public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
+	}
+	
+	@Bean(name= "primaryTransactionManager")
+	public PlatformTransactionManager primaryTransactionManager(@Qualifier("primaryDataSource") DataSource prodDataSource) {
+	    return new DataSourceTransactionManager(prodDataSource);
 	}
 
 }

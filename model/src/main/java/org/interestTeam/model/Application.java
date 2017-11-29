@@ -12,6 +12,7 @@ import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomi
 import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RestController;
 
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -27,6 +28,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * 异步调用，配对@Async等
  */
 @EnableAsync
+@EnableTransactionManagement
 @EnableSwagger2
 @SpringBootApplication(scanBasePackages={"org.interestTeam.model.*"})
 public class Application {
@@ -47,4 +49,5 @@ public class Application {
 			}
 		};
 	}
+	
 }
