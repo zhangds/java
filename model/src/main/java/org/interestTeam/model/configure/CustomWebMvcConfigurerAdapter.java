@@ -1,4 +1,4 @@
-package org.interestTeam.model.interceptor;
+package org.interestTeam.model.configure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

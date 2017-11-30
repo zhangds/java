@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.interestTeam.model.interceptor;
+package org.interestTeam.model.configure;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
