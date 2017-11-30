@@ -1,11 +1,13 @@
 /**
  * 
  */
-package org.interestTeam.model;
+package org.interestTeam.model.service;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import lombok.Data;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -20,8 +22,11 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  */
 @Configuration
 @EnableSwagger2
+@ConfigurationProperties(prefix="project")
+@Data
 public class Swagger2 {
 
+	String name;
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
@@ -35,7 +40,7 @@ public class Swagger2 {
     @SuppressWarnings("deprecation")
 	private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Spring Boot中使用Swagger2构建RESTful APIs")
+                .title(this.name+"项目使用Swagger2构建RESTful APIs")
                 .description("")
                 .termsOfServiceUrl("")
                 .contact("@author dongshengzhang")

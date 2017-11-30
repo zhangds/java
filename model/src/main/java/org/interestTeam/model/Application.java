@@ -9,17 +9,17 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
+import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RestController;
-
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
 @EnableAutoConfiguration
-//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 /**
  * 时间调度，配对@Scheduled等
  */
@@ -46,6 +46,7 @@ public class Application {
 			// @Override
 			public void customize(ConfigurableEmbeddedServletContainer container) {
 				container.setSessionTimeout(30, TimeUnit.MINUTES);// 单位为分钟
+				container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/error/404"));
 			}
 		};
 	}

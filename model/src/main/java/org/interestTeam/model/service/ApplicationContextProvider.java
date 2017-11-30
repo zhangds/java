@@ -1,4 +1,4 @@
-package org.interestTeam.model;
+package org.interestTeam.model.service;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
