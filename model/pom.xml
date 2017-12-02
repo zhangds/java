@@ -109,7 +109,7 @@
 					<archive>
 						<manifest>
 							<addClasspath>true</addClasspath>
-							<mainClass>com.powerbridge.manifest.manifestFrame.App</mainClass>
+							<mainClass>org.interestTeam.model.Application</mainClass>
 							<!-- <addDefaultImplementationEntries>true</addDefaultImplementationEntries> 
 								<addDefaultSpecificationEntries>true</addDefaultSpecificationEntries> -->
 						</manifest>
