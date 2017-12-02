@@ -54,7 +54,7 @@ public class PrimaryDataSourceConfig {
 
     @Bean(name = "primaryTransactionManager")
     @Primary
-    public DataSourceTransactionManager testTransactionManager(@Qualifier("primaryDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager primaryTransactionManager(@Qualifier("primaryDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
@@ -68,11 +68,6 @@ public class PrimaryDataSourceConfig {
 	@Primary
 	public JdbcTemplate primaryJdbcTemplate(@Qualifier("primaryDataSource") DataSource dataSource) {
 		return new JdbcTemplate(dataSource);
-	}
-	
-	@Bean(name= "primaryTransactionManager")
-	public PlatformTransactionManager primaryTransactionManager(@Qualifier("primaryDataSource") DataSource prodDataSource) {
-	    return new DataSourceTransactionManager(prodDataSource);
 	}
 
 }
