@@ -2,8 +2,6 @@ package org.interestTeam.model;
 
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +14,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.bind.annotation.RestController;
+
+import lombok.extern.slf4j.Slf4j;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @RestController
@@ -31,13 +31,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableTransactionManagement
 @EnableSwagger2
 @SpringBootApplication(scanBasePackages={"org.interestTeam.model.*"})
+@Slf4j
 public class Application {
-	private static final Logger logger = LoggerFactory.getLogger(Application.class);
+	//private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
 	public static void main(String[] args) {
-		logger.info("程序开始启动!...");
+		log.info("程序开始启动!...");
 		SpringApplication.run(Application.class, args);
-		logger.info("程序启动完成!...");
+		log.info("程序启动完成!...");
 	}
 
 	@Bean
