@@ -8,8 +8,6 @@
  */
 package org.interestTeam.model.controller;
 
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -32,7 +30,7 @@ public class ErrorSkipController {
     //@ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
 	@RequestMapping(value="/error/404",method = {RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
-	public ModelAndView skipToErrorHtml(@ModelAttribute("model") ModelMap model) {
+	public ModelAndView skipToErrorHtml() {
 		ModelAndView mv = new ModelAndView("/error/404");// 模板文件的名称，不需要指定后缀
 		return mv;
 	}
