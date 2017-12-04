@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.interestTeam.model.service;
+package org.interestTeam.model.configure;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
