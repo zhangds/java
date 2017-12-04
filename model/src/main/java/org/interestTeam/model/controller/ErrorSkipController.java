@@ -27,7 +27,6 @@ import io.swagger.annotations.ApiOperation;
 public class ErrorSkipController {
 
 	@ApiOperation(value="错误404页面跳转", notes="错误页面跳转处理")
-    //@ApiImplicitParam(name = "id", value = "用户ID", required = true, dataType = "Long")
 	@RequestMapping(value="/error/404",method = {RequestMethod.GET,RequestMethod.POST})
 	@ResponseBody
 	public ModelAndView skipToErrorHtml() {

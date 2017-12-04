@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.HandlerMapping;
 import org.webjars.WebJarAssetLocator;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * @author zhangds
  * @category 解决webjar的版本号问题
@@ -28,6 +31,8 @@ import org.webjars.WebJarAssetLocator;
 public class WebJarController {
     private final WebJarAssetLocator assetLocator = new WebJarAssetLocator();
 
+    @ApiOperation(value="webjar的引用", notes="引用webjar的资源")
+    @ApiImplicitParam(name = "webjar", value = "webjar的资源内容", required = true, dataType = "String")
     @ResponseBody
     @RequestMapping(value="/webjarslocator/{webjar}/**",method = {RequestMethod.GET,RequestMethod.POST})
     public ResponseEntity<Object> locateWebjarAsset(@PathVariable String webjar, HttpServletRequest request) {
