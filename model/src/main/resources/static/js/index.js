@@ -134,6 +134,13 @@ layui.config({
 	//隐藏左侧导航
 	$(".hideMenu").click(function(){
 		$(".layui-layout-admin").toggleClass("showMenu");
+		if ($(".hideMenu").hasClass("fa-angle-double-left")){
+			$(".hideMenu").removeClass("fa-angle-double-left");
+			$(".hideMenu").addClass("fa-angle-double-right");
+		}else{
+			$(".hideMenu").removeClass("fa-angle-double-right");
+			$(".hideMenu").addClass("fa-angle-double-left");
+		}	
 		//渲染顶部窗口
 		tab.tabMove();
 	})
