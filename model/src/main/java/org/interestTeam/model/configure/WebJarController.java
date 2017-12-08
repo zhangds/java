@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.interestTeam.model.controller;
+package org.interestTeam.model.configure;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +20,7 @@ import org.webjars.WebJarAssetLocator;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @author zhangds
@@ -33,6 +34,7 @@ public class WebJarController {
 
     @ApiOperation(value="webjar的引用", notes="引用webjar的资源")
     @ApiImplicitParam(name = "webjar", value = "webjar的资源内容", required = true, dataType = "String")
+    @ApiIgnore
     @ResponseBody
     @RequestMapping(value="/webjarslocator/{webjar}/**",method = {RequestMethod.GET,RequestMethod.POST})
     public ResponseEntity<Object> locateWebjarAsset(@PathVariable String webjar, HttpServletRequest request) {

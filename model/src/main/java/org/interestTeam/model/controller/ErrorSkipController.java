@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.swagger.annotations.ApiOperation;
+import springfox.documentation.annotations.ApiIgnore;
 
 /** 
  * @ClassName: ErrorSkipController 
@@ -24,6 +25,7 @@ import io.swagger.annotations.ApiOperation;
  *  
  */
 @RestController
+@ApiIgnore
 public class ErrorSkipController {
 
 	@ApiOperation(value="错误404页面跳转", notes="错误页面跳转处理")
@@ -32,5 +34,5 @@ public class ErrorSkipController {
 	public ModelAndView skipToErrorHtml() {
 		ModelAndView mv = new ModelAndView("/error/404");// 模板文件的名称，不需要指定后缀
 		return mv;
-	}
+	}	
 }

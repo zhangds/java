@@ -32,7 +32,8 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.interestTeam.model.controller"))
+                //.apis(RequestHandlerSelectors.basePackage("org.interestTeam.model.controller"))
+                .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -44,6 +45,7 @@ public class Swagger2 {
                 .description("")
                 .termsOfServiceUrl("")
                 .contact("@author dongshengzhang")
+                .license("Apache 2.0")
                 .version("1.0")
                 .build();
     }
