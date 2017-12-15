@@ -51,8 +51,11 @@ layui.config({
             data:data.field,
             success: function (data) {
             	layer.close(index);
-            	layer.msg(data.msg);
-            	window.parent.location.href="../login";
+            	layer.confirm(data.msg, {
+            		  	btn: ['确定'] //按钮
+            		}, function(){
+            			window.parent.location.href="./login";
+            		});
             }
 		});
     	return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
