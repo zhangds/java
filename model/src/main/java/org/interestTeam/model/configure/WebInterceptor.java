@@ -8,13 +8,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * @author dongshengzhang
  * @category 自定义拦截器
  */
-@Slf4j
 public class WebInterceptor implements HandlerInterceptor {
     
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
@@ -35,7 +32,6 @@ public class WebInterceptor implements HandlerInterceptor {
 //        System.out.println(request.getParameterMap());
 //        log.info(String.format("请求参数, url: %s, method: %s, uri: %s, params: %s ,contextPath: %s", url, method, uri, queryString,request.getContextPath()));
         request.setAttribute("mvcPath", request.getContextPath());
-        log.debug("add mvcPath!");
         return true;
 	}
     
