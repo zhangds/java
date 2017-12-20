@@ -8,11 +8,18 @@
  */
 package org.interestTeam.model.controller;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.interestTeam.model.database.entity.MenuEntity;
 import org.interestTeam.model.database.entity.UserEntity;
 import org.interestTeam.model.service.EncryptService;
 import org.interestTeam.model.service.LoginService;
+import org.interestTeam.model.service.MenuService;
+import org.interestTeam.model.models.MenuDao;
 import org.interestTeam.model.models.SessionKeyConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -67,6 +74,54 @@ public class IframeController {
 		mv.addObject("projectName", name);
 		mv.addObject("user", user);
 		return mv;
+	}
+	
+	@Autowired
+	MenuService menuService;
+	
+	@ApiOperation(value = "获取菜单", notes = "获取当前用户所属菜单,目前未加入权限体系,只是将用户注入其中")
+	@RequestMapping(value="/menus",method = {RequestMethod.GET,RequestMethod.POST})
+	@ResponseBody
+	public Object getCurrentUserForMenus(@ModelAttribute(SessionKeyConstants.USER) UserEntity user){
+		List<MenuDao> result = null;
+		try {
+			List<MenuEntity> list = menuService.getAllDbMenus();
+			result = realListForMenus(list);
+				
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		return result;
+	}
+	
+	public List<MenuDao> realListForMenus(List<MenuEntity> dlist){
+		List<MenuDao> list = new ArrayList<MenuDao>();
+		for (MenuEntity _entity:dlist){
+			if ( _entity.getMenuParentId()==null || _entity.getMenuParentId().equals("") ){
+				MenuDao _dao = new MenuDao(_entity.getMenuId(),_entity.getMenuTitle(),_entity.getMenuParentId(),
+						_entity.getMenuIcon(),_entity.getMenuUrl(),_entity.isMenuSpread(),null);
+				List<MenuDao> _list = getRecursionMenuDao(dlist,_entity.getMenuId());
+				if (_list != null && _list.size()>0)
+					_dao.setChildren(_list);
+				list.add(_dao);
+			}
+		}
+		return list;
+	}
+	
+	public List<MenuDao> getRecursionMenuDao(List<MenuEntity> dlist,String parentId){
+		List<MenuDao> list = new ArrayList<MenuDao>();
+		for (MenuEntity _entity:dlist){
+			if (parentId.equals(_entity.getMenuParentId())){
+				MenuDao _dao = new MenuDao(_entity.getMenuId(),_entity.getMenuTitle(),_entity.getMenuParentId(),
+						_entity.getMenuIcon(),_entity.getMenuUrl(),_entity.isMenuSpread(),null);
+				List<MenuDao> children = getRecursionMenuDao(dlist,_entity.getMenuId());
+				if (children != null && children.size()>0)
+					_dao.setChildren(children);
+				list.add(_dao);
+			}
+		}
+		return list;
 	}
 	
 	@Autowired
