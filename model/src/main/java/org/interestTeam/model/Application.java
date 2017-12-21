@@ -48,6 +48,7 @@ public class Application {
 			public void customize(ConfigurableEmbeddedServletContainer container) {
 				container.setSessionTimeout(30, TimeUnit.MINUTES);// 单位为分钟
 				container.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/error/404"));
+				container.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/login"));
 			}
 		};
 	}
