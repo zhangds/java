@@ -17,6 +17,8 @@ function navBar(strData){
 			if(data[i].icon != undefined && data[i].icon != ''){
 				if(data[i].icon.indexOf("icon-") != -1){
 					ulHtml += '<i class="iconfont '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
+				}else if (data[i].icon.indexOf("fa-") >= 0){
+					ulHtml += '<i class="fa '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
 				}else{
 					ulHtml += '<i class="layui-icon" data-icon="'+data[i].icon+'">'+data[i].icon+'</i>';
 				}
@@ -50,6 +52,8 @@ function navBar(strData){
 			if(data[i].icon != undefined && data[i].icon != ''){
 				if(data[i].icon.indexOf("icon-") != -1){
 					ulHtml += '<i class="iconfont '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
+				}else if (data[i].icon.indexOf("fa-") >= 0){
+					ulHtml += '<i class="fa '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
 				}else{
 					ulHtml += '<i class="layui-icon" data-icon="'+data[i].icon+'">'+data[i].icon+'</i>';
 				}
