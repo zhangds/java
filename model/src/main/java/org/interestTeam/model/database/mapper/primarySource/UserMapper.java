@@ -40,6 +40,16 @@ public interface UserMapper {
 			@Result(property = "sex", column = "sex", javaType = SexEnum.class),
 			@Result(property = "createTime", column = "create_time", javaType = String.class, jdbcType = JdbcType.TIMESTAMP) })
 	List<UserEntity> getUsers();
+	
+	@Select("SELECT * FROM user_user where (login_id like '%'||#{key, jdbcType=VARCHAR}||'%' or login_name like '%'||#{key, jdbcType=VARCHAR}||'%') order by login_id desc")
+	@Results({ @Result(property = "loginId", column = "login_id"),
+			@Result(property = "loginName", column = "login_name"),
+			@Result(property = "loginPassword", column = "login_password"),
+			@Result(property = "createUserId", column = "create_user_id"),
+			@Result(property = "loginStatus", column = "login_status", javaType = UserStatusEnum.class),
+			@Result(property = "sex", column = "sex", javaType = SexEnum.class),
+			@Result(property = "createTime", column = "create_time", javaType = String.class, jdbcType = JdbcType.TIMESTAMP) })
+	public List<UserEntity> getUsersByKeys(String key);
 
 	@Select("SELECT * FROM user_user WHERE login_id = #{id}")
 	@Results({ @Result(property = "loginId", column = "login_id"),
