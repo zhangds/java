@@ -20,7 +20,6 @@
 	<script type="text/javascript" src="${mvcPath!""}/webjarslocator/pie/PIE.js"></script>
 	<![endif]-->
 	<link href="${mvcPath!""}/webjarslocator/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" href="${mvcPath!""}/css/font.css" media="all" />
 	<link rel="stylesheet" href="${mvcPath!""}/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="${mvcPath!""}/css/main.css" media="all" />
 	<link rel="stylesheet" href="${mvcPath!""}/css/user.css" media="all" />
