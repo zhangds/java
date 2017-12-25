@@ -8,8 +8,9 @@
  */
 package org.interestTeam.model.service;
 
+import org.interestTeam.model.configure.SystemRunning;
 import org.interestTeam.model.models.DesUtil;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lombok.Data;
@@ -21,18 +22,18 @@ import lombok.Data;
  * @date 2017年12月7日 下午4:12:36 
  *  
  */
-@ConfigurationProperties(prefix="project")
 @Data
 @Service
 public class EncryptService {
 
-	private String defaultKey;
+	@Autowired
+	SystemRunning systemRunning;
 	
 	public String encrypt(String string) throws Exception{
-		return DesUtil.encrypt(string, defaultKey);
+		return DesUtil.encrypt(string, systemRunning.getDefaultKey());
 	}
 	
 	public String decrypt(String string) throws Exception{
-		return DesUtil.decrypt(string, defaultKey);
+		return DesUtil.decrypt(string, systemRunning.getDefaultKey());
 	}
 }

@@ -9,10 +9,12 @@
 package org.interestTeam.model.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.interestTeam.model.configure.SystemRunning;
 import org.interestTeam.model.database.entity.UserEntity;
 import org.interestTeam.model.models.LoginStateVo;
 import org.interestTeam.model.models.SessionKeyConstants;
@@ -20,7 +22,6 @@ import org.interestTeam.model.service.EncryptService;
 import org.interestTeam.model.service.LoginService;
 import org.interestTeam.model.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -59,8 +63,11 @@ public class UserController {
 	@Autowired
 	UserService userService;
 	
-	@Value("${project.redirect}")
-	private String profileActive;
+	@Autowired
+	SystemRunning systemRunning;
+	
+//	@Value("${project.redirect}")
+//	private String profileActive;
 
 	@ApiOperation(value = "用户登录验证信息", notes = "用户验证")
 	@ApiImplicitParams({
@@ -77,7 +84,7 @@ public class UserController {
 			data.put("success", result.isSuccess());
 			data.put("msg", result.getMsg());
 			if (result.isSuccess()) {
-				data.put("redirect", profileActive);
+				data.put("redirect", systemRunning.getRedirect());
 			}
 		} catch (Exception e) {
 			log.error(e.getMessage());
@@ -93,6 +100,46 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("user/changePwd");// 模板文件的名称，不需要指定后缀
 		mv.addObject("user", user);
 		return mv;
+	}
+	
+	@RequestMapping(value="/userManager",method = {RequestMethod.GET})
+	@ResponseBody
+	@ApiIgnore
+	public ModelAndView userManager(@ModelAttribute(SessionKeyConstants.USER) UserEntity user) {
+		ModelAndView mv = new ModelAndView("user/manager");// 模板文件的名称，不需要指定后缀
+		mv.addObject("user", user);
+		return mv;
+	}
+	
+	@ApiOperation(value = "获取用户列表", notes = "获取用户列表数据")
+	@ApiImplicitParams({
+			@ApiImplicitParam(paramType = "query", name = "likeKey", dataType = "String", required = false, value = "查询参数,模糊匹配id和名称", defaultValue = "")
+	})
+	@ApiResponses({ @ApiResponse(code = 400, message = "请求参数没填好"),
+			@ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对") })
+	@RequestMapping(value = "/getUserList", method = { RequestMethod.POST })
+	@ResponseBody
+	public Object getUserList(@ModelAttribute(SessionKeyConstants.USER) UserEntity user,HttpServletRequest request) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		String likeKey = request.getParameter("likeKey");
+		result.put("flag", false);
+		result.put("msg", "数据读取失败!");
+		List<UserEntity> list = null;
+		try {
+			PageHelper.startPage(1, 10);
+			if (null == likeKey || "".equals(likeKey.trim())){
+				list = userService.getUsers();
+			}else{
+				list = userService.getUsersByKeys(likeKey);
+			}
+			PageInfo<UserEntity> page = new PageInfo<UserEntity>(list);
+			result.put("page", page);
+			result.put("flag", true);
+			result.put("msg", "数据读取成功!");
+		} catch (Exception e) {
+			log.error(e.getMessage());
+		}
+		return result;
 	}
 	
 	@Autowired

@@ -35,6 +35,10 @@ public class UserService {
 	public List<UserEntity> getUsers() throws Exception {
 		return userMapper.getUsers();
 	}
+	
+	public List<UserEntity> getUsersByKeys(String key) throws Exception {
+		return userMapper.getUsersByKeys(key);
+	}
 
 	public UserEntity getUserById(String id) throws Exception {
 		return userMapper.getUserById(id);

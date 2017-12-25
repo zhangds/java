@@ -14,6 +14,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.interestTeam.model.configure.SystemRunning;
 import org.interestTeam.model.database.entity.MenuEntity;
 import org.interestTeam.model.database.entity.UserEntity;
 import org.interestTeam.model.service.EncryptService;
@@ -22,7 +23,6 @@ import org.interestTeam.model.service.MenuService;
 import org.interestTeam.model.models.MenuDao;
 import org.interestTeam.model.models.SessionKeyConstants;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,13 +47,15 @@ import springfox.documentation.annotations.ApiIgnore;
  *  
  */
 @RestController
-@ConfigurationProperties(prefix="project")
 @Data
 @SessionAttributes({ SessionKeyConstants.USER })
 @Slf4j
 public class IframeController {
 
-	public String name ;
+//	public String name ;
+	@Autowired
+	SystemRunning systemRunning;
+	
 	@Autowired
 	LoginService loginService;
 	
@@ -62,7 +64,7 @@ public class IframeController {
 	@ApiIgnore
 	public ModelAndView login() {
 		ModelAndView mv = new ModelAndView("login");// 模板文件的名称，不需要指定后缀
-		mv.addObject("projectName", name);
+		mv.addObject("projectName", systemRunning.getName());
 		return mv;
 	}
 	
@@ -71,7 +73,7 @@ public class IframeController {
 	@ApiIgnore
 	public ModelAndView index(@ModelAttribute(SessionKeyConstants.USER) UserEntity user) {
 		ModelAndView mv = new ModelAndView("index/index");// 模板文件的名称，不需要指定后缀
-		mv.addObject("projectName", name);
+		mv.addObject("projectName", systemRunning.getName());
 		mv.addObject("user", user);
 		return mv;
 	}
@@ -163,7 +165,7 @@ public class IframeController {
 	public ModelAndView rest(HttpServletRequest request) {
 		loginService.clearCookie(request);
 		ModelAndView mv = new ModelAndView("login");// 模板文件的名称，不需要指定后缀
-		mv.addObject("projectName", name);
+		mv.addObject("projectName", systemRunning.getName());
 		return mv;
 	}
 	
