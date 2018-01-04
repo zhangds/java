@@ -188,5 +188,5 @@ function pad2(num, n) {
 function getVal(value){
 	value = (value==null)?0:value;
 	var _v = value+"";
-	return pad2(_v,10)+"";
+	return pad2(_v,7)+"";
 }

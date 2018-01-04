@@ -24,23 +24,23 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
   <style type="text/css">
-		body{background:#00123e;width: 4096px;height: 1024px;font-family:"黑体";color:#FFFFFF;}
-		.topRow,.topRow div{height:165px;font-size:36px;margin:0;padding:0}
-		.topRow .leftArea{text-indent:30px;height:165px;overflow: auto;background: url(./images/leftArea.png) no-repeat;background-size:66% 100%;}
+		body{background:#00123e;width: 1920px; height: 1024px;font-family:"黑体";color:#FFFFFF;}
+		.topRow,.topRow div{height:110px;font-size:18px;margin:0;padding:0}
+		.topRow .leftArea{text-indent:30px;height:110px;overflow: auto;background: url(./images/leftArea.png) no-repeat;background-size:66% 100%;}
 		.topRow .leftArea .row .lineText{height:36px;}
-		.topRow .centerArea{height:165px;overflow: auto;background: url(./images/centerArea.png) center no-repeat;background-size:80% 100%;}
-		.topRow .rightArea{text-align:right;height:165px;overflow: auto;background: url(./images/rightArea.png) right no-repeat;background-size:66% 100%;}
+		.topRow .centerArea{height:110px;overflow: auto;background: url(./images/centerArea.png) center no-repeat;background-size:80% 100%;}
+		.topRow .rightArea{text-align:right;height:110px;overflow: auto;background: url(./images/rightArea.png) right no-repeat;background-size:66% 100%;}
 		.topRow .rightArea .row .lineText{height:36px;padding-right: 30px;}
 		.centerRow{height:859px;margin: 0px;}
-		.centerRow div.one{padding:0px;height:859px;overflow: auto;background: url(./images/leftImage.png) center no-repeat;}
-		.centerRow div.two{padding:0px;height:859px;overflow: auto;background: url(./images/centerImage.png) center no-repeat;left: -150px;}
-		.centerRow div.thrid{padding:0px;margin-left: -80px;}
+		.centerRow div.one{padding:0px;height:859px;overflow: auto;background: url(./images/leftImage.png) center no-repeat;background-size: 90% 80%;left: 0px;right: 0px;background-position: 50px 40px;margin-left: -20px;}
+		.centerRow div.two{padding:0px;height:859px;overflow: auto;background: url(./images/centerImage.png) center no-repeat;background-size: 100% 80%;left: 0px;right: 0px;background-position: 0px 40px;}
+		.centerRow div.thrid{padding:0px;left: 20px;}
 		.centerRow div.thrid div{height:104px;padding:0px;}
-		.centerRow div.thrid .row .centerFolder{color:#B4F7FF;padding:0px;height:104px;overflow: auto;background: url(./images/rightFolder.png) center no-repeat;}
-		.centerRow div.thrid .row .centerFolder span{font-size:36px;position:absolute;margin:32px 0px 32px 55px}
+		.centerRow div.thrid .row .centerFolder{color:#B4F7FF;padding:0px;height:104px;overflow: auto;background: url(./images/rightFolder.png) center no-repeat;background-size: 90% 60%;}
+		.centerRow div.thrid .row .centerFolder span{font-size:18px;position:absolute;margin:44px 10px 12px 30px;}
 		.centerRow div.thrid .row .centerText{padding:0px;height:104px;color:#5587FB;}
-		.centerRow div.thrid .row .centerText .row .bg{background:#0B2568;width: 50px;height: 74px;position:relative;margin:18px 5px 20px 10px;}
-		.centerRow div.thrid .row .centerText .row span{font-size:42px;position:absolute;margin:12px 15px;}
+		.centerRow div.thrid .row .centerText .row .bg{background:#0B2568;width: 30px;height: 40px;position:relative;margin:30px 2px 20px 10px;}
+		.centerRow div.thrid .row .centerText .row span{font-size:42px;position:absolute;margin:-6px 10px 12px 4px;}
 		/*.topRow div.left{width:700px;text-align:right}
 		.topRow div.right{width:700px} */
   </style>
@@ -55,8 +55,8 @@
 			<div class="col-md-3">
 				<div class="leftArea">
 					<div class="row" >
-						<div class="col-md-12 lineText one" style="margin-top: 30px;"></div>
-						<div class="col-md-12 lineText two" style="margin-top: 20px;"></div>
+						<div class="col-md-12 lineText one" style="margin-top: 20px;"></div>
+						<div class="col-md-12 lineText two" style="margin-top: 10px;"></div>
 					</div>
 				</div>
 			</div>
@@ -67,8 +67,8 @@
 			<div class="col-md-3">
 				<div class="rightArea">
 					<div class="row" >
-						<div class="col-md-12 lineText one" style="margin-top: 30px;"></div>
-						<div class="col-md-12 lineText two" style="margin-top: 20px;"></div>
+						<div class="col-md-12 lineText one" style="margin-top: 20px;"></div>
+						<div class="col-md-12 lineText two" style="margin-top: 10px;"></div>
 					</div>
 				</div>
 			</div>
@@ -77,17 +77,14 @@
 			<div class="col-md-5 one"></div>
 			<div class="col-md-4 two"></div>
 			<div class="col-md-3 thrid">
-				<div class="col-md-12" style="margin-top: 50px">
+				<div class="col-md-12" style="margin-top: 70px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
 							<span>今日报关单数</span>
 						</div>
 						<div class="col-md-8 centerText" id="todayEntrys">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 50px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
@@ -98,17 +95,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12" style="margin-top: 20px">
+				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
 							<span>今日转关单数</span>
 						</div>
 						<div class="col-md-8 centerText" id="todayDecls">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 50px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
@@ -119,17 +113,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12" style="margin-top: 20px">
+				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
 							<span>报关单总数</span>
 						</div>
 						<div class="col-md-8 centerText" id="totalEntrys">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 50px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
@@ -140,17 +131,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12" style="margin-top: 20px">
+				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
 							<span>转关单总数</span>
 						</div>
 						<div class="col-md-8 centerText" id="totalDecls">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 50px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
@@ -161,17 +149,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12" style="margin-top: 20px">
+				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
 							<span>服务企业数</span>
 						</div>
 						<div class="col-md-8 centerText" id="totalComs">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 50px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>7</span></div>
@@ -182,17 +167,14 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-12" style="margin-top: 20px">
+				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
 							<span>在区船舶数</span>
 						</div>
 						<div class="col-md-8 centerText" id="totalShips">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 50px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>4</span></div>
@@ -418,7 +400,7 @@
         			totalShipsObj.each(function(index,element){
         				$(this).find("span").text(_totalShips.charAt(index));
         			});
-        			setTimeout(timeData,1000*60*10);
+        			setTimeout(timeData,1000*2);//60*10);
                 }
 			});
 		};

@@ -80,12 +80,12 @@ public class BigScreenOneDao implements BigScreenService {
 			qs_ship = primaryJdbcTemplate.queryForObject(QS_SHIP_SQL, String.class);
 		} catch (Exception e) {
 			log.error(e.getMessage());
-			qn_entry = "0";
-			qn_decl = "0";
-			dr_entry = "0";
-			dr_decl = "0";
-			dr_trade_num = "0";
-			qs_ship = "0";
+			qn_entry = "5";
+			qn_decl = "5";
+			dr_entry = "5";
+			dr_decl = "5";
+			dr_trade_num = "5";
+			qs_ship = "5";
 		}
 		
 		Map<String,String> map = new LinkedHashMap<String,String>();
