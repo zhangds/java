@@ -24,7 +24,7 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
   <style type="text/css">
-		body{background:#00123e;width: 1920px; height: 1024px;font-family:"黑体";color:#FFFFFF;}
+		body{background:#0d2251;width: 1920px; height: 1024px;font-family:"黑体";color:#FFFFFF;}/* ;#00133e */
 		.topRow,.topRow div{height:110px;font-size:18px;margin:0;padding:0}
 		.topRow .leftArea{text-indent:30px;height:110px;overflow: auto;background: url(./images/leftArea.png) no-repeat;background-size:66% 100%;}
 		.topRow .leftArea .row .lineText{height:36px;}
@@ -39,8 +39,9 @@
 		.centerRow div.thrid .row .centerFolder{color:#B4F7FF;padding:0px;height:104px;overflow: auto;background: url(./images/rightFolder.png) center no-repeat;background-size: 90% 60%;}
 		.centerRow div.thrid .row .centerFolder span{font-size:18px;position:absolute;margin:44px 10px 12px 30px;}
 		.centerRow div.thrid .row .centerText{padding:0px;height:104px;color:#5587FB;}
-		.centerRow div.thrid .row .centerText .row .bg{background:#0B2568;width: 30px;height: 40px;position:relative;margin:30px 2px 20px 10px;}
-		.centerRow div.thrid .row .centerText .row span{font-size:42px;position:absolute;margin:-6px 10px 12px 4px;}
+		.centerRow div.thrid .row .centerText .row .bg{background:#0B2568;/* width: 30px; */height: 40px;position:relative;margin:30px 2px 20px 10px;}/*  #42509b */
+		.centerRow div.thrid .row .centerText .row span{font-size:42px;position:absolute;margin:-6px 10px 12px 4px;letter-spacing:8px;}
+		.centerRow div.thrid .row .centerText .row{height:104px;overflow: auto;background: url(./images/numberFolder.png) center no-repeat;background-size: 90% 60%;}
 		/*.topRow div.left{width:700px;text-align:right}
 		.topRow div.right{width:700px} */
   </style>
@@ -80,17 +81,17 @@
 				<div class="col-md-12" style="margin-top: 70px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
-							<span>今日报关单数</span>
+							<span>今日报关量</span>
 						</div>
 						<div class="col-md-8 centerText" id="todayEntrys">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 40px;"><span>1</span></div>
+								<!-- <div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>1</span></div>
+								<div class="col-md-1 bg"><span>1</span></div> -->
 							</div>
 						</div>
 					</div>
@@ -98,17 +99,17 @@
 				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
-							<span>今日转关单数</span>
+							<span>今日转关量</span>
 						</div>
 						<div class="col-md-8 centerText" id="todayDecls">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 40px;"><span>1</span></div>
+								<!-- <div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>2</span></div>
 								<div class="col-md-1 bg"><span>2</span></div>
-								<div class="col-md-1 bg"><span>8</span></div>
+								<div class="col-md-1 bg"><span>8</span></div> -->
 							</div>
 						</div>
 					</div>
@@ -116,17 +117,17 @@
 				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
-							<span>报关单总数</span>
+							<span id="totalEntrysTitle">年报关量</span>
 						</div>
 						<div class="col-md-8 centerText" id="totalEntrys">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 40px;"><span>1</span></div>
+								<!-- <div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
-								<div class="col-md-1 bg"><span>1</span></div>
+								<div class="col-md-1 bg"><span>1</span></div> -->
 							</div>
 						</div>
 					</div>
@@ -134,17 +135,17 @@
 				<div class="col-md-12" style="margin-top: 0px">
 					<div class="row" style="margin:0px;">
 						<div class="col-md-4 centerFolder">
-							<span>转关单总数</span>
+							<span id="totalDeclsTitle">年转关量</span>
 						</div>
 						<div class="col-md-8 centerText" id="totalDecls">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 40px;"><span>246</span></div>
+								<!-- <div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>2</span></div>
 								<div class="col-md-1 bg"><span>4</span></div>
-								<div class="col-md-1 bg"><span>6</span></div>
+								<div class="col-md-1 bg"><span>6</span></div> -->
 							</div>
 						</div>
 					</div>
@@ -156,13 +157,13 @@
 						</div>
 						<div class="col-md-8 centerText" id="totalComs">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 40px;"><span>7550</span></div>
+								<!-- <div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>7</span></div>
 								<div class="col-md-1 bg"><span>5</span></div>
 								<div class="col-md-1 bg"><span>5</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg"><span>0</span></div> -->
 							</div>
 						</div>
 					</div>
@@ -174,13 +175,13 @@
 						</div>
 						<div class="col-md-8 centerText" id="totalShips">
 							<div class="row">
-								<div class="col-md-1 bg" style="margin-left: 20px;"><span>0</span></div>
-								<div class="col-md-1 bg"><span>0</span></div>
+								<div class="col-md-1 bg" style="margin-left: 40px;"><span>4653</span></div>
+								<!-- <div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>0</span></div>
 								<div class="col-md-1 bg"><span>4</span></div>
 								<div class="col-md-1 bg"><span>6</span></div>
 								<div class="col-md-1 bg"><span>5</span></div>
-								<div class="col-md-1 bg"><span>3</span></div>
+								<div class="col-md-1 bg"><span>3</span></div> -->
 							</div>
 						</div>
 					</div>
@@ -370,8 +371,17 @@
             		var totalDecls = result.qn_decl ;
             		var totalComs = result.dr_trade_num ;
             		var totalShips = result.qs_ship ;
-            		var _totalComs = getVal(totalComs);
-        			var todayEntrysObj = $("#totalComs").find(".bg");
+            		$("#totalComs").find(".bg").find("span").text(totalComs);
+            		$("#todayEntrys").find(".bg").find("span").text(todayEntrys);
+            		$("#todayDecls").find(".bg").find("span").text(todayDecls);
+            		$("#totalDecls").find(".bg").find("span").text(totalDecls);
+            		$("#totalShips").find(".bg").find("span").text(totalShips);
+            		$("#totalEntrys").find(".bg").find("span").text(totalEntrys);
+            		
+            		$("#totalEntrysTitle").text(yy+"年报关量");
+            		$("#totalDeclsTitle").text(yy+"年转关量");
+            		/*var _totalComs = getVal(totalComs);
+        			 var todayEntrysObj = $("#totalComs").find(".bg");
         			todayEntrysObj.each(function(index,element){
         				$(this).find("span").text(_totalComs.charAt(index));
         			});
@@ -399,7 +409,7 @@
         			var _totalShips = getVal(totalShips);
         			totalShipsObj.each(function(index,element){
         				$(this).find("span").text(_totalShips.charAt(index));
-        			});
+        			}); */
         			setTimeout(timeData,1000*2);//60*10);
                 }
 			});
