@@ -36,4 +36,8 @@ public class EncryptService {
 	public String decrypt(String string) throws Exception{
 		return DesUtil.decrypt(string, systemRunning.getDefaultKey());
 	}
+	
+	public String getDefaultPassword() throws Exception{
+		return encrypt(systemRunning.getDefaultPWD());
+	}
 }

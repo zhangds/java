@@ -32,4 +32,13 @@ public class UserEntity implements Serializable {
 	UserStatusEnum loginStatus;
 	SexEnum sex;
 	String createTime;
+	
+	public UserEntity(String loginId,String status){
+		this.loginId=loginId;
+		if ("close".equalsIgnoreCase(status)){
+			this.loginStatus = UserStatusEnum.CLOSE ;
+		}else{
+			this.loginStatus = UserStatusEnum.ON ;
+		}
+	}
 }

@@ -25,19 +25,25 @@
 
 </head>
 <body class="childrenBody">
-	<blockquote class="layui-elem-quote news_search">
+	<blockquote class="layui-elem-quote user_manager_search">
 		<div class="layui-inline">
 			<div class="layui-input-inline">
-				<input type="text" value="" placeholder="请输入关键字"
+				<input type="text" value="" id="likeKey" name="likeKey" placeholder="请输入关键字"
 					class="layui-input search_input">
 			</div>
-			<a class="layui-btn search_btn">查询</a>
+			<a class="layui-btn search_btn"><i class="fa fa-search" aria-hidden="true">&nbsp;&nbsp;查询</i></a>
 		</div>
 		<div class="layui-inline">
-			<a class="layui-btn layui-btn-normal addUser">添加用户</a>
+			<a class="layui-btn layui-btn-normal addUser"><i class="fa fa-plus" aria-hidden="true">&nbsp;&nbsp;添加用户</i></a>
 		</div>
 		<div class="layui-inline">
-			<a class="layui-btn layui-btn-danger batchDelUser">删除用户</a>
+			<a class="layui-btn batchOpenUser"><i class="fa fa-lock" aria-hidden="true">&nbsp;&nbsp;开启用户</i></a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-warm batchCloseUser"><i class="fa fa-unlock" aria-hidden="true">&nbsp;&nbsp;锁定用户</i></a>
+		</div>
+		<div class="layui-inline">
+			<a class="layui-btn layui-btn-danger batchDelUser"><i class="fa fa-minus" aria-hidden="true">&nbsp;&nbsp;删除用户</i></a>
 		</div>
 	</blockquote>
 	<div class="layui-form" id="user_manager_list">
@@ -46,28 +52,59 @@
 	<script id="userManagerList" type="text/html">
 			<table class="layui-table userManagerList">
 		    <colgroup>
-				<col width="70">
+				<col width="80">
+				<col width="50">
+				<col width="10%">
 				<col width="14%">
-				<col width="16%">
-				<col width="16%">
+				<col width="12%">
 				<col width="16%">
 				<col width="6%">
 				<col width="14%">
+				<col width="6%">
 				<col>
 		    </colgroup>
 		    <thead>
 				<tr>
-					<th>编号</th>
-					<th>用户ID</th>
-					<th>用户名</th>
-					<th>电话</th>
-					<th>邮箱</th>
-					<th>性别</th>
-					<th>创建时间</th>
-					<th>操作</th>
+					<th style="text-align: center;">编号</th>
+					<th><input type="checkbox" name="select" lay-skin="primary" lay-filter="allChoose" id="allChoose"></th>
+					<th style="text-align: center;">用户ID</th>
+					<th style="text-align: center;">用户名</th>
+					<th style="text-align: center;">电话</th>
+					<th style="text-align: center;">邮箱</th>
+					<th style="text-align: center;">性别</th>
+					<th style="text-align: center;">创建时间</th>
+					<th style="text-align: center;">状态</th>
+					<th style="text-align: center;">操作</th>
 				</tr> 
 		    </thead>
 		    <tbody class="userManagerList_content" id="userManagerList_content">
+				{{# layui.each(d.list, function (index, item){ }}
+					<tr>
+						<td style="text-align: center;">{{= (d.pageNum-1)*d.pageSize+index+1 || '' }}</td>
+						<td><input type="checkbox" name="selectOne" lay-skin="primary" lay-filter="choose"></td>
+						<td style="text-align:left;">{{= item.loginId || '' }}</td>
+						<td style="text-align:left;">{{= item.loginName || '' }}</td>
+						<td style="text-align:left;">{{= item.mobile || '' }}</td>
+						<td style="text-align:left;">{{= item.email || '' }}</td>
+						<td style="text-align:left;">{{= item.sex=='M'?'男':'女' || '' }}</td>
+						<td style="text-align:left;">{{= item.createTime || '' }}</td>
+						<td style="text-align:left;">{{= item.loginStatus=='ON'?'开启':'锁定' || '' }}
+						</td>
+						<td style="text-align:center;">
+							<div class="layui-btn-group">
+								<button class="layui-btn layui-btn-small layui-btn-sm" title="修改" option="editUserOne" oppara="{{= item.loginId || '' }}">
+    								<i class="layui-icon">&#xe642;</i>
+  								</button>
+								<button class="layui-btn layui-btn-warm layui-btn-small layui-btn-sm" title="密码初始化" option="initPwdUserOne" oppara="{{= item.loginId || '' }}">
+    								<i class="layui-icon">&#xe60f;</i>
+  								</button>
+							</div>
+						</td>
+					</tr>
+				{{#  }); }}
+				{{#  if(d.length === 0){ }}
+  					无数据
+				{{#  } }}
 		    </tbody>
 			</table>
 	</script>

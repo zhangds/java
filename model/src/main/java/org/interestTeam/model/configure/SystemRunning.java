@@ -40,4 +40,5 @@ public class SystemRunning {
 	String redirect;
 	String name;
 	String defaultKey;
+	String defaultPWD;
 }

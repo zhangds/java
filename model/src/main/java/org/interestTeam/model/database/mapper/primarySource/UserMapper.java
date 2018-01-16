@@ -72,11 +72,15 @@ public interface UserMapper {
 	List<UserEntity> getUserByName(String userName);
 
 	@Select("SELECT count(*) id FROM user_user WHERE login_name = #{userName}")
-	@Results({ @Result(property = "id", column = "id", javaType = Long.class) })
-	Long getCountbyName(String userName);
+	@Results({ @Result(property = "id", column = "id", javaType = Integer.class) })
+	int getCountbyName(String userName);
+	
+	@Select("SELECT count(*) id FROM user_user WHERE login_id = #{userId}")
+	@Results({ @Result(property = "id", column = "id", javaType = Integer.class) })
+	int getCountbyId(String userId);
 
 	@Insert("INSERT INTO user_user(login_id,login_name,login_password,login_status,mobile,email,sex,create_user_id,CREATE_time) VALUES("
-			+ "#{loginId}, #{loginName}, #{loginPassword}, #{loginStatus}, #{mobile}, #{sex}, #{createUserId}, #{createTime})")
+			+ "#{loginId}, #{loginName}, #{loginPassword}, #{loginStatus}, #{mobile},#{email},#{sex}, #{createUserId}, #{createTime})")
 	void insertUser(UserEntity user);
 
 	@Update("UPDATE user_user SET login_name=#{loginName},login_password=#{loginPassword},login_status=#{loginStatus},"
@@ -89,4 +93,7 @@ public interface UserMapper {
 
 	@Delete("DELETE FROM user_user WHERE login_id =#{loginId}")
 	void deleteUserByUser(UserEntity user);
+	
+	@Update("update user_user set login_status=#{loginStatus} where login_id =#{loginId}")
+	void updateLoginStatusById(UserEntity user);
 }

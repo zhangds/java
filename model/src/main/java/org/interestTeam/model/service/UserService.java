@@ -11,6 +11,8 @@ package org.interestTeam.model.service;
 import java.util.List;
 
 import org.interestTeam.model.database.entity.UserEntity;
+import org.interestTeam.model.database.enums.SexEnum;
+import org.interestTeam.model.database.enums.UserStatusEnum;
 import org.interestTeam.model.database.mapper.primarySource.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -48,7 +50,11 @@ public class UserService {
 		return userMapper.getUserByName(userName);
 	}
 	
-	public Long getCountbyName(String userName) throws Exception {
+	public int getCountbyId(String userId) throws Exception {
+		return userMapper.getCountbyId(userId);
+	}
+	
+	public int getCountbyName(String userName) throws Exception {
 		return userMapper.getCountbyName(userName);
 	}
 	
@@ -62,6 +68,24 @@ public class UserService {
 	
 	public void deleteUserByUser(UserEntity user) throws Exception {
 		userMapper.deleteUserByUser(user);
+	}
+	
+	public void updateLoginStatusById(UserEntity user) throws Exception {
+		userMapper.updateLoginStatusById(user);
+	}
+	
+	public UserEntity getUser(String loginId, String loginName, String status, String mobile, String sex, String email,
+			String createUserId, String pwd, String createTime) throws Exception {
+		UserStatusEnum statusEnum = UserStatusEnum.CLOSE;
+		if ("on".equalsIgnoreCase(status)) {
+			statusEnum = UserStatusEnum.ON;
+		}
+		SexEnum sexEnum = SexEnum.M;
+		if ("F".equalsIgnoreCase(sex)) {
+			sexEnum = SexEnum.F;
+		}
+		return new UserEntity(loginId, loginName, pwd, mobile, email, createUserId, statusEnum,
+				sexEnum, createTime);
 	}
 	
 }
