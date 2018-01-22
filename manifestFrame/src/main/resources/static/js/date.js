@@ -190,3 +190,9 @@ function getVal(value){
 	var _v = value+"";
 	return pad2(_v,7)+"";
 }
+
+function getVal(value,len){
+	value = (value==null)?0:value;
+	var _v = value+"";
+	return pad2(_v,len)+"";
+}

@@ -32,13 +32,33 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BigScreenController {
 
+	@RequestMapping(value="/",method = {RequestMethod.GET})
+	@ResponseBody
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView("bigScreen/index");// 模板文件的名称，不需要指定后缀
+		return mv;
+	}
+	
+	@RequestMapping(value="/one",method = {RequestMethod.GET})
+	@ResponseBody
+	public ModelAndView screenOne() {
+		ModelAndView mv = new ModelAndView("bigScreen/centerOne");// 模板文件的名称，不需要指定后缀
+		return mv;
+	}
+	
+	@RequestMapping(value="/two",method = {RequestMethod.GET})
+	@ResponseBody
+	public ModelAndView screenTwo() {
+		ModelAndView mv = new ModelAndView("bigScreen/centerTwo");// 模板文件的名称，不需要指定后缀
+		return mv;
+	}
+	
 	@RequestMapping(value="/screen",method = {RequestMethod.GET})
 	@ResponseBody
 	public ModelAndView login() {
 		ModelAndView mv = new ModelAndView("bigScreen/home");// 模板文件的名称，不需要指定后缀
 		return mv;
 	}
-	
 
 	@Autowired
 	BigScreenService bigScreenService;

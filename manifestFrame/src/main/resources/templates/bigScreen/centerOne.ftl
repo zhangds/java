@@ -24,13 +24,13 @@
 <script>DD_belatedPNG.fix('*');</script>
 <![endif]-->
   <style type="text/css">
-		body{background: url(./images/backgroudImg.png) center repeat;width: 1920px; height: 1024px;font-family:"黑体";color:#FFFFFF;}/* ;#00133e;background:#0d2251; */
-		.topRow,.topRow div{height:110px;font-size:18px;margin:0;padding:0}
+		body{background: url(./images/backgroudImg.png) center repeat;width: 1920px; height: 859px;font-family:"黑体";color:#FFFFFF;}/* ;#00133e;background:#0d2251; */
+		/* .topRow,.topRow div{height:110px;font-size:18px;margin:0;padding:0}
 		.topRow .leftArea{text-indent:30px;height:110px;overflow: auto;background: url(./images/leftAreaNew.png) no-repeat;background-size:66% 100%;}
 		.topRow .leftArea .row .lineText{height:36px;}
 		.topRow .centerArea{height:110px;overflow: auto;background: url(./images/centerAreaNew.png) center no-repeat;background-size:80% 100%;}
 		.topRow .rightArea{text-align:right;height:110px;overflow: auto;background: url(./images/rightAreaNew.png) right no-repeat;background-size:66% 100%;}
-		.topRow .rightArea .row .lineText{height:36px;padding-right: 30px;}
+		.topRow .rightArea .row .lineText{height:36px;padding-right: 30px;} */
 		.centerRow{height:859px;margin: 0px;}
 		.centerRow div.one{padding:0px;height:859px;overflow: auto;background: url(./images/left_image.png) center no-repeat;background-size: 90% 80%;left: 0px;right: 0px;background-position: 50px 40px;margin-left: -20px;}
 		.centerRow div.two{padding:0px;height:859px;overflow: auto;background: url(./images/centerimageNew.png) center no-repeat;background-size: 100% 80%;left: 0px;right: 0px;background-position: 0px 40px;}
@@ -48,11 +48,11 @@
 </head>
 <style type="text/css">
 </style>
-<title>${(appName)?default("大屏首页")}</title>
+<title>${(appName)?default("大屏第一页")}</title>
 </head>
 <body style="overflow: auto;">
 	<div class="container-fluid" style="padding:0">
-		<div class="row topRow">
+		<!-- <div class="row topRow">
 			<div class="col-md-3">
 				<div class="leftArea">
 					<div class="row" >
@@ -73,7 +73,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<div class="row centerRow">	
 			<div class="col-md-5 one"></div>
 			<div class="col-md-4 two"></div>
@@ -197,10 +197,10 @@
 	src="./js/date.js"></script>
 <script type="text/javascript">
 	(function (global) {  
-		$(".col-md-*").css({"padding-left": "0px","padding-right": "0px"});
+		/* $(".col-md-*").css({"padding-left": "0px","padding-right": "0px"});
 		$(".leftArea .row .lineText.one").html(today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日 "+"&nbsp;&nbsp;农历"+getNLyyyyMMdd(yy,mm,dd));
 		$(".rightArea .row .lineText.one").html(today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDate()+"日 "+"&nbsp;&nbsp;农历"+getNLyyyyMMdd(yy,mm,dd));
-		time();
+		time(); */
 		function timeData(){
 			$.ajax({
                 type:"post",
@@ -226,7 +226,7 @@
             		$("#totalDecls").find(".bg").find("span").text(totalDecls);
             		$("#totalShips").find(".bg").find("span").text(totalShips);
             		$("#totalEntrys").find(".bg").find("span").text(totalEntrys); */
-
+            		
             		$("#totalEntrysTitle").text(yy+"年报关量");
             		$("#totalDeclsTitle").text(yy+"年转关量");
             		var countNum = 6;
