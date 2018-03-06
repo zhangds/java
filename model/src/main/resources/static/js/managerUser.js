@@ -105,8 +105,8 @@ layui.config({
 				$(".userManagerList_content td .layui-btn-group [option='initPwdUserOne']").unbind();
 				$(".userManagerList_content td .layui-btn-group [option='initPwdUserOne']").click(function(){
 					var _id = $(this).attr("oppara");
-					layer.prompt(function(val, index){
-						  layer.msg(_id+'得到了'+val);
+					layer.prompt({title: '输入密码', formType: 1},function(val, index){
+						  //layer.msg(_id+'得到了'+val);
 						  $.ajax({
 							    url:'../user/actChangeOnePwd',
 							    type:'POST', //GET
