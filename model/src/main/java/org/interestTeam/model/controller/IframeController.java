@@ -9,7 +9,9 @@
 package org.interestTeam.model.controller;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -99,7 +101,7 @@ public class IframeController {
 	public List<MenuDao> realListForMenus(List<MenuEntity> dlist){
 		List<MenuDao> list = new ArrayList<MenuDao>();
 		for (MenuEntity _entity:dlist){
-			if ( _entity.getMenuParentId()==null || _entity.getMenuParentId().equals("") ){
+			if ( _entity.getMenuParentId()==null || "".equals(_entity.getMenuParentId()) ){
 				MenuDao _dao = new MenuDao(_entity.getMenuId(),_entity.getMenuTitle(),_entity.getMenuParentId(),
 						_entity.getMenuIcon(),_entity.getMenuUrl(),_entity.isMenuSpread(),null);
 				List<MenuDao> _list = getRecursionMenuDao(dlist,_entity.getMenuId());
@@ -167,6 +169,24 @@ public class IframeController {
 		ModelAndView mv = new ModelAndView("login");// 模板文件的名称，不需要指定后缀
 		mv.addObject("projectName", systemRunning.getName());
 		return mv;
+	}
+	
+	/*
+	 * 获取服务器的时间
+	 */
+	@ApiOperation(value = "服务器时间返回", notes = "获取服务器时间返回")
+	@ApiImplicitParams({
+			@ApiImplicitParam(paramType = "query", name = "formatString", dataType = "String",
+					required = true, value = "格式字符串", defaultValue = "yyyy年MM月dd日")
+			})
+	@RequestMapping(value="/currentTime",method = {RequestMethod.GET})
+	@ResponseBody
+	public Object currentTime(HttpServletRequest request){
+		String formatString = request.getParameter("formatString")==null?"yyyy年MM月dd日":request.getParameter("formatString");
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat(formatString);
+		String dateNowStr = dateFormat.format(GregorianCalendar.getInstance().getTime());
+		return dateNowStr;
 	}
 	
 }
