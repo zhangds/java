@@ -23,6 +23,8 @@ import org.interestTeam.model.service.EncryptService;
 import org.interestTeam.model.service.LoginService;
 import org.interestTeam.model.service.MenuService;
 import org.interestTeam.model.models.MenuDao;
+import org.interestTeam.model.models.MyAnnotation;
+//import org.interestTeam.model.models.MyAnnotation;
 import org.interestTeam.model.models.SessionKeyConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -131,6 +133,7 @@ public class IframeController {
 	@Autowired
 	EncryptService encryptService;
 	
+	@MyAnnotation(desc="测试")
 	@ApiOperation(value = "加密", notes = "字符串加密")
 	@ApiImplicitParams({
 			@ApiImplicitParam(paramType = "query", name = "encryptString", dataType = "String", required = true, value = "加密字符串", defaultValue = "111")
@@ -139,6 +142,7 @@ public class IframeController {
 	@ResponseBody
 	public Object encryptString(@RequestParam("encryptString")String encryptString){
 		try {
+			System.out.println("method");
 			return encryptService.encrypt(encryptString);
 		} catch (Exception e) {
 			log.error(e.getMessage());
