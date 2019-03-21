@@ -34,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import io.swagger.annotations.ApiImplicitParam;
@@ -52,7 +53,7 @@ import springfox.documentation.annotations.ApiIgnore;
  */
 @RestController
 @Data
-@SessionAttributes({ SessionKeyConstants.USER })
+@SessionAttributes(value={SessionKeyConstants.USER},types={UserEntity.class})
 @Slf4j
 public class IframeController {
 
@@ -75,7 +76,7 @@ public class IframeController {
 	@RequestMapping(value="/index",method = {RequestMethod.GET})
 	@ResponseBody
 	@ApiIgnore
-	public ModelAndView index(@ModelAttribute(SessionKeyConstants.USER) UserEntity user) {
+	public ModelAndView index(@ModelAttribute(SessionKeyConstants.USER) UserEntity user,HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView("index/index");// 模板文件的名称，不需要指定后缀
 		mv.addObject("projectName", systemRunning.getName());
 		mv.addObject("user", user);
@@ -168,8 +169,9 @@ public class IframeController {
 	@RequestMapping(value="/rest",method = {RequestMethod.GET})
 	@ResponseBody
 	@ApiIgnore
-	public ModelAndView rest(HttpServletRequest request) {
+	public ModelAndView rest(HttpServletRequest request,SessionStatus sessionStatus) {
 		loginService.clearCookie(request);
+		sessionStatus.setComplete();
 		ModelAndView mv = new ModelAndView("login");// 模板文件的名称，不需要指定后缀
 		mv.addObject("projectName", systemRunning.getName());
 		return mv;
