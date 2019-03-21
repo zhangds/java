@@ -120,7 +120,7 @@
 		</div>
 		<!-- 底部 -->
 		<div class="layui-footer footer">
-			<p>copyright @2017 zhangds</p>
+			<p>copyright @2018 zhangds</p>
 		</div>
 	</div>
 	
