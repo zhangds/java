@@ -1,6 +1,6 @@
 package org.interestTeam.model.configure;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -12,15 +12,28 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 @Configuration
 public class CustomWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 	
-	@Bean
-	WebInterceptor  webInterceptor(){
-        return new WebInterceptor();
-    }
+//	@Bean
+//	WebInterceptor  webInterceptor(){
+//        return new WebInterceptor();
+//    }
+//	
+//	@Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(webInterceptor()).excludePathPatterns("/swagger**/**").addPathPatterns("/**");  //对来自/** 这个链接来的请求进行拦截
+//        super.addInterceptors(registry);
+//    }
+	@Autowired
+	WebInterceptor webInterceptor;
+	
+	@Autowired
+	AccessLimitInterceptor accessLimitInterceptor;
 	
 	@Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(webInterceptor()).excludePathPatterns("/swagger**/**").addPathPatterns("/**");  //对来自/** 这个链接来的请求进行拦截
+        registry.addInterceptor(webInterceptor).excludePathPatterns("/swagger**/**").addPathPatterns("/**");
+        registry.addInterceptor(accessLimitInterceptor);
         super.addInterceptors(registry);
     }
+
 	
 }

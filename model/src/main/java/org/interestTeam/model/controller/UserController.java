@@ -85,7 +85,7 @@ public class UserController {
 	public Object login(@PathVariable String userId, @PathVariable String pwd, HttpServletRequest request) {
 		Map<String, Object> data = new HashMap<String, Object>();
 		try {
-			LoginStateVo result = loginService.login(userId, pwd, SessionKeyConstants.USER, request.getSession());
+			LoginStateVo result = loginService.login(userId, pwd, request.getSession());
 			data.put("success", result.isSuccess());
 			data.put("msg", result.getMsg());
 			if (result.isSuccess()) {

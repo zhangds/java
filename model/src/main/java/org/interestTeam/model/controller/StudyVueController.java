@@ -9,6 +9,7 @@
 package org.interestTeam.model.controller;
 
 import org.interestTeam.model.database.entity.UserEntity;
+import org.interestTeam.model.models.AccessLimit;
 import org.interestTeam.model.models.SessionKeyConstants;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +39,7 @@ public class StudyVueController {
 	@RequestMapping(value="/test/{step}",method = {RequestMethod.GET})
 	@ResponseBody
 	@ApiIgnore
+	@AccessLimit(seconds=5, maxCount=5, needLogin=true)
 	//ModelAttribute
 	public ModelAndView changePwd(@ModelAttribute(SessionKeyConstants.USER) UserEntity user
 			,@PathVariable String step) {

@@ -14,8 +14,10 @@ import javax.servlet.http.HttpSession;
 
 import org.interestTeam.model.database.entity.UserEntity;
 import org.interestTeam.model.models.LoginStateVo;
+import org.interestTeam.model.models.SessionKeyConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.support.SessionStatus;
 
 /** 
  * @ClassName: LoginService 
@@ -33,13 +35,13 @@ public class LoginService {
 	@Autowired
 	EncryptService encryptService;
 	
-	public LoginStateVo login(String userId,String originPwd,String sessionUserStr,HttpSession session) throws Exception{
+	public LoginStateVo login(String userId,String originPwd,HttpSession session) throws Exception{
 		UserEntity user = userService.getUserById(userId);
 		String pwd = encryptService.encrypt(originPwd);
 		LoginStateVo state = new LoginStateVo();
 		state.setSuccess(false);
 		if (user != null && user.getLoginPassword().equals(pwd)){
-			session.setAttribute(sessionUserStr, user);
+			session.setAttribute( SessionKeyConstants.USER, user);
 			state.setSuccess(true);
 			state.setMsg("登录成功!");
 		}else if (user != null && !user.getLoginPassword().equals(pwd)){

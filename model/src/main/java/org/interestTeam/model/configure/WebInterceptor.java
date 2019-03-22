@@ -5,6 +5,8 @@ package org.interestTeam.model.configure;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
  * @author dongshengzhang
  * @category 自定义拦截器
  */
+@Component
 public class WebInterceptor implements HandlerInterceptor {
     
 	public void afterCompletion(HttpServletRequest arg0, HttpServletResponse arg1, Object arg2, Exception arg3)
