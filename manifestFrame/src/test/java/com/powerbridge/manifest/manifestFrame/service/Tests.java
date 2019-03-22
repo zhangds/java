@@ -8,6 +8,7 @@
  */
 package com.powerbridge.manifest.manifestFrame.service;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
