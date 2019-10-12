@@ -17,6 +17,6 @@ public class TestController {
 	@GetMapping(value="/decrypt/{pwd}")
 	public String decrypt(@PathVariable String pwd){
 		log.debug("首次!");
-		return "ftl/index/index";
+		return "index/index";
 	}
 }
