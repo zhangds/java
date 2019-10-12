@@ -250,12 +250,23 @@
 		</dependency>
 	</dependencies>
 	<build>
-        <plugins>
-            <!-- 编译插件 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
+	<plugins>
+		<!-- 编译插件 -->
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+				<!-- 程序的主启动类，即：用@SpringBootApplication注解，包含main方法的类 -->
+				<mainClass>com.ctcc.kf.springboot2.Springboot2Application</mainClass>
+			</configuration>
+			<executions>
+				<execution>
+					<goals>
+						<goal>repackage</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
     </build>
 </project>
