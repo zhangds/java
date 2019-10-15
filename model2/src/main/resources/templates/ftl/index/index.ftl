@@ -13,7 +13,7 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<meta name="keywords" content="">
 	<meta name="description" content="">
-	<link rel="icon" href="${mvcPath}/static/images/favicon.ico">
+	<link rel="shortcut icon" type="images/x-icon" href="${mvcPath}/static/images/favicon.ico">
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="${mvcPath!""}/webjarslocator/html5shiv/html5shiv.min.js"></script>
 	<script type="text/javascript" src="${mvcPath!""}/webjarslocator/respond/respond.min.js"></script>
