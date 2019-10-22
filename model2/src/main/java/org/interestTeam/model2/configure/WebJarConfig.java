@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.HandlerMapping;
 import org.webjars.WebJarAssetLocator;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 @ComponentScan
 @Configuration
 @RestController
 public class WebJarConfig {
 	private final WebJarAssetLocator assetLocator = new WebJarAssetLocator();
 
+    @ApiIgnore
     @ResponseBody
     @RequestMapping(value="/webjarslocator/{webjar}/**",method = {RequestMethod.GET,RequestMethod.POST})
     public ResponseEntity<Object> locateWebjarAsset(@PathVariable String webjar, HttpServletRequest request) {
