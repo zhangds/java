@@ -275,7 +275,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<!-- 程序的主启动类，即：用@SpringBootApplication注解，包含main方法的类 -->
-					<mainClass>com.ctcc.kf.springboot2.Springboot2Application</mainClass>
+					<mainClass>org.interestTeam.model2.BootApp</mainClass>
 				</configuration>
 				<executions>
 					<execution>
