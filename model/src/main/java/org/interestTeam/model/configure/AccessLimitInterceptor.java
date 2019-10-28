@@ -11,12 +11,14 @@ package org.interestTeam.model.configure;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import org.interestTeam.model.database.entity.UserEntity;
 import org.interestTeam.model.models.AccessLimit;
+import org.interestTeam.model.models.SessionKeyConstants;
 
 /** 
  * @ClassName: FangshuaInterceptor 
@@ -51,9 +53,11 @@ public class AccessLimitInterceptor extends HandlerInterceptorAdapter {
            String key = request.getRequestURI();
            //如果需要登录
            if(login){
-               //获取登录的session进行判断
-               //.....
-               key+=""+"1";  //这里假设用户是1,项目中是动态获取的userId
+        	   UserEntity user = (UserEntity)request.getSession().getAttribute(SessionKeyConstants.USER);
+        	   if ( StringUtils.isEmpty(user) || StringUtils.isEmpty(user.getLoginId()) ){
+        		   return false;
+        	   }
+               key+="/"+user.getLoginId(); //这里假设用户是1,项目中是动态获取的userId
            }
 
            //从redis中获取用户访问的次数

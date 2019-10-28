@@ -44,7 +44,7 @@ public class StudyVueController {
 	public ModelAndView changePwd(@ModelAttribute(SessionKeyConstants.USER) UserEntity user
 			,@PathVariable String step) {
 		ModelAndView mv = null;
-		if (step != null && "test".equalsIgnoreCase(step)){
+		if (step != null && "one".equalsIgnoreCase(step)){
 			mv = new ModelAndView("vue/stepOne");
 			log.debug("第一阶段!");
 		}
