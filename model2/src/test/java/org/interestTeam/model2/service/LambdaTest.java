@@ -17,6 +17,7 @@ public class LambdaTest {
 		List<String> list = (List<String>) Arrays.asList(players);
 		list.forEach(value -> System.out.println(value));
 		System.out.println("==========");
+		/*List*/
 //		Stream<String> _stream = list.stream().filter( e -> e.length() > 4 ).limit(1);
 //		list = _stream.collect(Collectors.<String>toList());
 //		list.forEach(System.out::println);
