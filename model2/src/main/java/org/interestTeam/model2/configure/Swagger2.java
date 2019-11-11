@@ -48,7 +48,7 @@ public class Swagger2 {
                 .contact(new Contact("@author dongshengzhang", "", "emai@qq.com"))
                 .license("The Apache License, Version 2.0")
                 .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
-                .version("1.0")
+                .version("1.1")
                 .build();
     }
 
