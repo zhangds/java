@@ -41,7 +41,7 @@ public class BootApp {
         return new WebServerFactoryCustomizer<ConfigurableWebServerFactory>() {
             public void customize(ConfigurableWebServerFactory factory) {
                 factory.addErrorPages(new ErrorPage(HttpStatus.NOT_FOUND, "/error/404"));
-                factory.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/login"));
+                factory.addErrorPages(new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR,"/error/500"));
             }
         };
     }
