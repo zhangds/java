@@ -6,6 +6,7 @@
   <artifactId>springboot-webflux-4-thymeleaf</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>springboot-webflux-4-thymeleaf</name>
+  <packaging>jar</packaging>
 
   <!-- Spring Boot 启动父依赖 -->
   <parent>
