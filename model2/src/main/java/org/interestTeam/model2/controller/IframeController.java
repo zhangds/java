@@ -8,6 +8,10 @@
  */
 package org.interestTeam.model2.controller;
 
+import java.util.List;
+
+import org.interestTeam.model2.service.MenuService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,10 +36,14 @@ public class IframeController {
 	@Value("${project.name}")
 	private String name;
 	
+	@Autowired
+	MenuService menuService;
+	
 	@ApiOperation(value = "首页", notes = "首页页面")
 	@GetMapping(value="/main")
 	public String index(Model model){
 		model.addAttribute("projectName", name);
+		menuService.getMenus();
 		return "index/main";
 	}
 }
