@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import io.swagger.annotations.ApiOperation;
+import lombok.Data;
 
 /** 
  * @ClassName: IframeController 
@@ -24,6 +25,7 @@ import io.swagger.annotations.ApiOperation;
  *  
  */
 @Controller
+@Data
 @RequestMapping(value = "/")
 public class IframeController {
 
