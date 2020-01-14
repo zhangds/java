@@ -8,8 +8,6 @@
  */
 package org.interestTeam.model2.controller;
 
-import java.util.List;
-
 import org.interestTeam.model2.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
