@@ -3,7 +3,20 @@
  */
  
 $(function(){
-	var tree_data = [{
+	var html = {
+			menuPanel : ["<div id=\"sysPanel\" class=\"easyui-panel\" title=\"系统管理\" style=\"width:208px;height:auto;padding:0px;\"",
+				" data-options=\"iconCls:'icon-blank',collapsible:true\">",
+				"<ul id=\"sysMenu\" class=\"easyui-tree\" ></ul>",
+				"</div>"
+				].join("")
+	};
+	if (mainPage.menus && mainPage.menus.length >0){
+		$(".main_body #menuTool").empty();
+		for (var i=0;i<mainPage.menus.length;i++){
+			
+		}
+	}
+	/*var tree_data = [{
         id : 1,
         text: '人员管理',
         state: 'closed',
@@ -12,6 +25,7 @@ $(function(){
             id : 11,
             iconCls:'icon-sum',
             text: '人员设置',
+            state: 'closed',
             attributes : {
                 url : '${path}/menuTree/index/success'
             }
@@ -35,7 +49,7 @@ $(function(){
         }]
     }];
     $('#sysPanel #sysMenu').tree({
-        data: tree_data,
+        data: mainPage.menus,
         onClick:function(node)
         {
             var tabTitle =node.text;
@@ -47,5 +61,5 @@ $(function(){
             	alert(url);
             }
         }
-    });
+    });*/
 });

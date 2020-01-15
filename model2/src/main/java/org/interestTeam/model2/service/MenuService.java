@@ -8,6 +8,9 @@
  */
 package org.interestTeam.model2.service;
 
+import java.util.List;
+
+import org.interestTeam.model2.dao.MenuDao;
 import org.springframework.stereotype.Service;
 
 /** 
@@ -20,5 +23,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface MenuService {
 
-	public void getMenus();
+	public List<MenuDao> getAllMenus();
 }
