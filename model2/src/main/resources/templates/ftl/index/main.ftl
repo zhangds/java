@@ -93,5 +93,6 @@ h2 {
 </script>
 	<script type="text/javascript" src="${mvcPath!""}/easyui/1.3.2/jquery-1.8.0.min.js"></script>
 	<script type="text/javascript" src="${mvcPath!""}/easyui/1.3.2/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="${mvcPath!""}/js/template.js"></script>
 	<script type="text/javascript" src="${mvcPath!""}/js/main.js"></script>
 </html>

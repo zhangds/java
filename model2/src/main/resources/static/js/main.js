@@ -4,6 +4,10 @@
  
 $(function(){
 	var html = {
+			template : function (source,jsonObj){
+	    		var _temp = template.compile(source);
+	    		return _temp(jsonObj);
+	    	},
 			menuPanel : ["<div id=\"sysPanel\" class=\"easyui-panel\" title=\"系统管理\" style=\"width:208px;height:auto;padding:0px;\"",
 				" data-options=\"iconCls:'icon-blank',collapsible:true\">",
 				"<ul id=\"sysMenu\" class=\"easyui-tree\" ></ul>",
