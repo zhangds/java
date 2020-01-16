@@ -1,7 +1,19 @@
 /**
  * 
  */
- 
+/* //刷新当前标签Tabs
+    function RefreshTab(currentTab) {
+        var url = $(currentTab.panel('options')).attr('href');
+        $('#tabs').tabs('update', {
+            tab: currentTab,
+            options: {
+                href: url
+            }
+        });
+        currentTab.panel('refresh');
+  }
+    var currentTab = $('#tabs').tabs('getSelected');
+    RefreshTab(currentTab);*/
 $(function(){
 	var html = {
 			template : function (source,jsonObj){
