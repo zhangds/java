@@ -10,7 +10,7 @@
 	<properties>
 		<springboot.version>2.2.2.RELEASE</springboot.version><!-- 2.1.6.RELEASE -->
 		<swagger2.version>2.9.2</swagger2.version>
-		<font-awesome.version>5.12.0</font-awesome.version>
+		<font-awesome.version>4.7.0</font-awesome.version><!-- 5.12.0 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>

@@ -13,16 +13,18 @@
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<meta name="keywords" content="">
 	<meta name="description" content="">
-	<link rel="shortcut icon" type="images/x-icon" href="${mvcPath}/images/favicon.ico">
+	<link rel="shortcut icon" type="images/x-icon" href="${mvcPath!''}/images/favicon.ico">
 	<!--[if lt IE 9]>
-	<script type="text/javascript" src="${mvcPath!""}/webjarslocator/html5shiv/html5shiv.min.js"></script>
-	<script type="text/javascript" src="${mvcPath!""}/webjarslocator/respond/respond.min.js"></script>
-	<script type="text/javascript" src="${mvcPath!""}/webjarslocator/pie/PIE.js"></script>
+	<script type="text/javascript" src="${mvcPath!''}/webjarslocator/html5shiv/html5shiv.min.js"></script>
+	<script type="text/javascript" src="${mvcPath!''}/webjarslocator/respond/respond.min.js"></script>
+	<script type="text/javascript" src="${mvcPath!''}/webjarslocator/pie/PIE.js"></script>
 	<![endif]-->
-	<link rel="stylesheet" type="text/css" href="${mvcPath!""}/easyui/1.3.2/themes/metro/easyui.css">
-	<link rel="stylesheet" type="text/css" href="${mvcPath!""}/easyui/1.3.2/themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="${mvcPath!''}/easyui/1.3.2/themes/metro/easyui.css">
+	<link rel="stylesheet" type="text/css" href="${mvcPath!''}/easyui/1.3.2/themes/icon.css">
+	<!--<link rel="stylesheet" href="${mvcPath!''}/webjarslocator/font-awesome/css/fontawesome.min.css">-->
+	<link rel="stylesheet" type="text/css" href="${mvcPath!''}/webjarslocator/font-awesome/css/font-awesome.min.css"/>
 *{
-	font-size:12px;
+	font-size:14px;
 }
 body {
     font-family:helvetica,tahoma,verdana,sans-serif;
@@ -50,13 +52,14 @@ h2 {
 </head>
 <body class="main_body easyui-layout">
 	<div data-options="region:'north',border:false" style="height:60px;line-height:60px;background:#FFF;padding:0px">
+	<i class="fa fa-border fa-bars fa-lg"></i>
 	</div>
 	<div id="menuTool" title="菜单" data-options="region:'west',split:false,title:'&nbsp;&nbsp;',border:true" style="width:210px;padding:0px;">
 	</div>
 	</div>
 	<!-- <div data-options="region:'east',split:true,title:'East'" style="width:100px;padding:10px;">east region</div> -->
 	<div data-options="region:'south',border:false" style="height:50px;line-height:50px;background:#FFF;padding:0px;text-align: right;">
-		copyright @2020 zhangds&nbsp;&nbsp;&nbsp;&nbsp;
+		copyright @2020 zhangds&nbsp;&nbsp;<i class="fa fa-firefox fa-lg"></i>&nbsp;&nbsp;
 	</div>
 	<div data-options="region:'center',title:''">
 	<div id="mainTabs" class="easyui-tabs" style="" data-options="fit:true">
