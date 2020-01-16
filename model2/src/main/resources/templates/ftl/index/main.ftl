@@ -50,9 +50,8 @@ h2 {
 </head>
 <body class="main_body easyui-layout">
 	<div data-options="region:'north',border:false" style="height:60px;line-height:60px;background:#FFF;padding:0px">
-	123
 	</div>
-	<div id="menuTool" data-options="region:'west',split:false,title:'&nbsp;&nbsp;',border:true" style="width:210px;padding:0px;">
+	<div id="menuTool" title="菜单" data-options="region:'west',split:false,title:'&nbsp;&nbsp;',border:true" style="width:210px;padding:0px;">
 				<!--<div id="sysPanel" class="easyui-panel" title="系统管理" style="width:208px;height:auto;padding:0px;"
 				data-options="iconCls:'icon-blank',collapsible:true">
 				<ul id='sysMenu' class="easyui-tree" ></ul>
@@ -83,12 +82,14 @@ h2 {
 	<div data-options="region:'south',border:false" style="height:50px;line-height:50px;background:#FFF;padding:0px;text-align: right;">
 		copyright @2020 zhangds&nbsp;&nbsp;&nbsp;&nbsp;
 	</div>
-	<div data-options="region:'center',title:''"></div>
+	<div data-options="region:'center',title:''">
+	
+	</div>
 </body>
 <script type="text/javascript">
     var mainPage = {
     		"path" : '${mvcPath!""}',
-    		"menus" : ${menus!"[]"}
+    		"menus":${menus![]}
     	};
 </script>
 	<script type="text/javascript" src="${mvcPath!""}/easyui/1.3.2/jquery-1.8.0.min.js"></script>
