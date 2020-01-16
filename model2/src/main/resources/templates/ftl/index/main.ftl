@@ -52,38 +52,19 @@ h2 {
 	<div data-options="region:'north',border:false" style="height:60px;line-height:60px;background:#FFF;padding:0px">
 	</div>
 	<div id="menuTool" title="菜单" data-options="region:'west',split:false,title:'&nbsp;&nbsp;',border:true" style="width:210px;padding:0px;">
-				<!--<div id="sysPanel" class="easyui-panel" title="系统管理" style="width:208px;height:auto;padding:0px;"
-				data-options="iconCls:'icon-blank',collapsible:true">
-				<ul id='sysMenu' class="easyui-tree" ></ul>
-			 <ul class="easyui-tree" data-options="animate:true">
-				<li><span>My Documents</span>
-					<ul>
-						<li data-options="state:'closed',attributes:{url:'123'}" ><span>Photos</span>
-							<ul>
-								<li data-options="iconCls:'icon-sum'"><span>Friend</span></li>
-								<li><span>Wife</span></li>
-								<li><span>Company</span></li>
-							</ul></li>
-						<li data-options="state:'closed'"><span>Program Files</span>
-							<ul>
-								<li>Intel</li>
-								<li>Java</li>
-								<li>Microsoft Office</li>
-								<li>Games</li>
-							</ul></li>
-						<li>index.html</li>
-						<li>about.html</li>
-						<li>welcome.html</li>
-					</ul></li>
-			</ul> -->
-		</div>
+	</div>
 	</div>
 	<!-- <div data-options="region:'east',split:true,title:'East'" style="width:100px;padding:10px;">east region</div> -->
 	<div data-options="region:'south',border:false" style="height:50px;line-height:50px;background:#FFF;padding:0px;text-align: right;">
 		copyright @2020 zhangds&nbsp;&nbsp;&nbsp;&nbsp;
 	</div>
 	<div data-options="region:'center',title:''">
-	
+	<div id="mainTabs" class="easyui-tabs" style="" data-options="fit:true">
+		<div title="主页" style="padding:5px" data-options="iconCls:'icon-tip'">
+		</div>
+		<!-- <div title="test1" data-options="iconCls:'icon-help',closable:true" style="padding:5px">
+		</div> -->
+	</div>
 	</div>
 </body>
 <script type="text/javascript">
