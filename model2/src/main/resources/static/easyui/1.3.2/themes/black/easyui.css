@@ -115,6 +115,7 @@
 .panel-body {
   background-color: #666;
   color: #fff;
+  overflow: hidden;
 }
 .panel-title {
   font-weight: bold;
