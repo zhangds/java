@@ -27,7 +27,7 @@
 body.login_body{
 	font-family:helvetica,tahoma,verdana,sans-serif;
     padding:20px;
-    font-size:13px;
+    font-size:15px;
     margin:0;
     padding: 0;
     background-color: #379F8C;
@@ -42,13 +42,31 @@ body.login_body{
 </style>
 </head>
 <body class="login_body" data-options="fit:true">
-	 <div id="w" class="easyui-window" title="Basic Window" data-options="modal:true,closed:false"  style="width:500px;height:200px;padding:10px;">
-		The window content.
+	 <div id="w" class="easyui-window" title="<i class='fa fa-firefox fa-lg'></i>&nbsp;&nbsp;登录" data-options="modal:true,closable:false,resizable:false,collapsible:false,minimizable:false,maximizable:false,shadow:true"  style="width:400px;height:170px;padding:10px;">
+		<form id="loginForm">
+			<div>
+				<label for="name" style="width: 20%;">用户名:&nbsp;&nbsp;</label> <input
+					class="easyui-validatebox" type="text" name="userId" id="userId"
+					data-options="required:true" style="width: 80%;" />
+			</div>
+			<div style="margin-top: 10px;">
+				<label for="pwd" style="width: 20%;">密码:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+				<input class="easyui-passwordbox easyui-validatebox" type="Password"
+					name="pwd" id="pwd" prompt="Password" style="width: 80%;"
+					data-options="required:true">
+			</div>
+		</form>
+		<div style="text-align:right;padding:10px">
+	    	<a href="javascript:void(0)" class="easyui-linkbutton"  id="submitForm" name="submitForm" >
+	    	 <i class="fa fa-check fa-lg" aria-hidden="true"></i>确认</a>
+	    	<a href="javascript:void(0)" class="easyui-linkbutton"  id="clearForm" name="clearForm" >
+	    	<i class="fa fa-times fa-lg" aria-hidden="true"></i>取消</a>
+	    </div>
 	</div>
 </div>
 </body>
 <script type="text/javascript">
-    var mainPage = {
+    var loginPage = {
     		"path" : '${mvcPath!""}'
     	};
 </script>
@@ -56,4 +74,5 @@ body.login_body{
 	<script type="text/javascript" src="${mvcPath!""}/easyui/1.3.2/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="${mvcPath!""}/easyui/1.3.2/locale/easyui-lang-zh_CN.js"></script>
 	<script type="text/javascript" src="${mvcPath!""}/js/template.js"></script>
+	<script type="text/javascript" src="${mvcPath!""}/js/login.js"></script>
 </html>

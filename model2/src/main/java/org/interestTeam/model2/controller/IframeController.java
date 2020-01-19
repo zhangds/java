@@ -9,21 +9,33 @@
 package org.interestTeam.model2.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.interestTeam.model2.dao.MenuDao;
+import org.interestTeam.model2.dao.UserDao;
 import org.interestTeam.model2.service.MenuService;
+import org.interestTeam.model2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 /** 
  * @ClassName: IframeController 
@@ -35,10 +47,14 @@ import lombok.Data;
 @Controller
 @Data
 @RequestMapping(value = "/")
+@Slf4j
 public class IframeController {
 
 	@Value("${project.name}")
 	private String name;
+	
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	MenuService menuService;
@@ -48,6 +64,28 @@ public class IframeController {
 	public String login(Model model){
 		model.addAttribute("projectName", name);
 		return "index/login";
+	}
+	
+	@ApiOperation(value = "登录验证", notes = "登录验证")
+	@ApiImplicitParams({
+		@ApiImplicitParam(paramType = "query", name = "userId", required = true, value = "用户ID", defaultValue = "")
+		,@ApiImplicitParam(paramType = "query", name = "pwd", dataType = "String", required = true, value = "密码", defaultValue = "")
+	})
+	@PostMapping(value="/checkUser")
+	@ResponseBody
+	public Object checkUser(@RequestParam("userId")String userId,@RequestParam("pwd")String pwd,
+			HttpServletRequest request,Model model){
+		Map<String,Object> resultMap = new LinkedHashMap<String,Object>();
+		UserDao _currentUser = new UserDao(){{
+			setLoginId(userId);
+			setLoginPassword(pwd);
+		}};
+		try {
+			_currentUser = userService.getUserByIdAndPlainCodePwd(_currentUser);
+		} catch (Exception e) {
+			log.error(e.getLocalizedMessage());
+		}
+		return resultMap;
 	}
 	
 	@ApiOperation(value = "首页", notes = "首页页面")

@@ -22,7 +22,7 @@ public class TestUserService {
 	@Test
 	public void test(){
 		try {
-			userService.deleteUserById("zhangds");
+			//userService.deleteUserById("zhangds");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
