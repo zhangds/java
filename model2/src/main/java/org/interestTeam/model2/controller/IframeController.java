@@ -43,6 +43,13 @@ public class IframeController {
 	@Autowired
 	MenuService menuService;
 	
+	@ApiOperation(value = "登录", notes = "登录页面")
+	@GetMapping(value="/login")
+	public String login(Model model){
+		model.addAttribute("projectName", name);
+		return "index/login";
+	}
+	
 	@ApiOperation(value = "首页", notes = "首页页面")
 	@GetMapping(value="/main")
 	public String index(Model model){
