@@ -12,7 +12,16 @@ $(function(){
 	            async: true,
 	            cache:false,
 	            success: function (data) {
-	            	alert(data);
+	            	if (data.flag){
+	            		window.location.href=data.redirectUrl;
+	            	}else{
+	                    $.messager.show({
+	                        title:'错误提示:',
+	                        msg:data.msg,
+	                        timeout:4000,
+	                        showType:'slide'
+	                    });
+	            	}
 	            }, beforeSend : function (XMLHttpRequest) {
 	           	}, complete : function(XMLHttpRequest,textStatus){
 	            }

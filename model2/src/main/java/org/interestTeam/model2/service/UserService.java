@@ -11,7 +11,11 @@ public class UserService {
 	@Autowired
 	private UserMapper userMapper;
 	
-	public UserDao getUserByIdAndPlainCodePwd(UserDao user) throws Exception {
-		return userMapper.getUserByIdAndPwd(user);
+	public UserDao getUserById(String id) throws Exception {
+		return userMapper.getUserById(id);
+	}
+	
+	public UserDao getUserByIdAndEncryptPwd(UserDao dao) throws Exception {
+		return userMapper.getUserByIdAndEncryptPwd(dao);
 	}
 }
