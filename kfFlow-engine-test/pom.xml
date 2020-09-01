@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.hb.kfcenter</groupId>
+		<artifactId>kfParent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>kfFlow-engine-test</artifactId>
+	<dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<!-- <plugin>
+				<groupId>net.roseboy</groupId>
+				<artifactId>classfinal-maven-plugin</artifactId>
+				<version>1.1.9</version>
+				<configuration>
+					<password>kf20200930</password>加密打包之后pom.xml会被删除，不用担心在jar包里找到此密码
+					<packages>com.hb.kfcenter.kfFlow.engine.text.util</packages>
+					<excludes>com.hb.kfcenter.kfFlow.engine.text.util.WebappClassLoaderConfiger.MAIN</excludes>
+					<libjars></libjars>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>classFinal</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin> -->
+			 <plugin>  
+                <groupId>org.apache.maven.plugins</groupId>  
+                <artifactId>maven-jar-plugin</artifactId>  
+                <configuration>  
+                    <archive>  
+                        <manifest>  
+                            <mainClass>com.hb.kfcenter.kfFlow.engine.text.util.WebappClassLoaderConfiger</mainClass>
+                        </manifest>  
+                    </archive>  
+                </configuration>  
+            </plugin> 
+		</plugins>
+	</build>
+
+</project>
