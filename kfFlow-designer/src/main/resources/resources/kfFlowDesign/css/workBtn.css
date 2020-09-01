@@ -1,0 +1,242 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+table{
+    border-collapse: collapse;
+}
+input{
+    vertical-align: middle;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+.frame{
+    width: 700px;
+    height: 500px;
+    border: 1px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -250px;
+    margin-left: -350px;
+}
+.title{
+    width: 100%;
+    height: 40px;
+    background-color: #FFF;
+    position: relative;
+    line-height: 40px;
+}
+.title p{
+    position: absolute;
+}
+.title p:first-child{
+    left: 15px;
+}
+.title p:last-child{
+    right: 15px;
+}
+.con{
+    width: 100%;
+    height: 460px;
+    background-color: rgb(85, 85, 180);
+    position: relative;
+}
+.tabs{
+    position: absolute;
+    top: 0;
+    bottom: 10px;
+    left: 15px;
+    right: 15px;
+    background-color: #FFF;
+}
+.options{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(0, 85, 100);
+    color: #FFF;
+    position: relative;
+}
+.selecolor{
+    color: #000;
+    background-color: #FFF !important;
+}
+.opt{
+    width: 90px;
+    line-height: 40px;
+    text-align: center;
+    float: left;
+    background-color: rgb(102, 147, 155)
+}
+.opt:hover{
+    cursor: pointer;
+}
+.contents{
+    width: 100%;
+    position: relative;
+    top: 0px;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+}
+.table{
+    width: 80%;
+    height: 330px;
+    /* margin: 40px auto; */
+    overflow-y: scroll;
+    position: absolute;
+    top: 40px;
+    left: 70px;
+}
+.contents table{
+    width: 100%;
+    text-align: center;
+}
+.contents table tr,td{
+    height: 40px;
+    border: 1px solid;
+}
+.acon{
+    width: 100px;
+    height: 25px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+    margin: 0 auto;
+    background-color: skyblue;
+    border: 1px solid;
+}
+.acon:hover{
+    cursor: pointer;
+}
+.priCon{
+    width: 90%;
+    height: 380px;
+    background-color: #66939B;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+    border: 1px solid;
+}
+.priCon-container{
+    width: 95%;
+    height: 95%;
+    margin: 10px auto;
+}
+.line{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+}
+.line p{
+    margin-left: 30px;
+    font-size: 14px;
+}
+.line input{
+    height: 20px;
+    margin-left: 20px;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    border: 1px solid;
+}
+.line p,.line input{
+    float: left;
+}
+.close-text{
+    float: right;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.priCon-center{
+    width: 100%;
+    height: 180px;
+    /* border: 1px solid; */
+}
+.int{
+    opacity: 0;
+    filter: alpha(opacity=0);
+    position: absolute;
+    right: 0;
+}
+.text-box{
+    width: 80%;
+    height: 100%;
+    border: 1px solid;
+    float: left;
+    overflow-y: auto;
+}
+.text-opt{
+    height: 100%;
+    float: left;
+    margin-left: 10px;
+    font-size: 14px;
+}
+.txb, .txbEle, .txtBox, .ands, .ors{
+    margin-left: 20px;
+}
+.add,.remove{
+    width: 90px;
+    height: 15px;
+    line-height: 15px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.inp{
+    margin-bottom: 10px;
+}
+.expression{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 14px;
+    padding: 5px 0;
+}
+.formula{
+    float: left;
+    margin-top: 15px;
+    margin-right: 60px;
+}
+.operator{
+    margin-top: 44px;
+}
+.formula .sel{
+    margin-bottom: 10px;
+}
+.sel select{
+    width: 100px;
+}
+.sel input{
+    width: 95px;
+}
+.sel1 input{
+    width: 95px;
+}
+.sel2 input{
+    width: 95px;
+}
+.define,.copy,.interpret{
+    border: 1px solid;
+    border-radius: 5px;
+    margin-left: 0px;
+    padding: 2px 15px;
+    margin-top: 2px;
+}
+.add,.remove,.copy,.define,.interpret,.txtBox:hover{
+    cursor: pointer;
+}
