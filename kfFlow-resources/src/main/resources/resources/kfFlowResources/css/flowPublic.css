@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+body{background:#EEEEEE;margin: 0px;font-size: 14px;width: 100%;height: 100%;font-family: '微软雅黑','Arial Normal', 'Arial';}
+.row{width: 100%;height: 30px;line-height: 30px;margin-top: 8px;clear: both;}
+.row .spanTitle{padding-right: 5px;display: inline-block;;width: 8%;height: 100%;text-align: right;vertical-align: middle;line-height: 30px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;overflow: hidden;float: left;}
+.row .spanOneTitle{padding-right: 5px;display: inline-block;;width: 30%;height: 100%;text-align: right;vertical-align: middle;line-height: 30px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;overflow: hidden;float: left;}
+.row .spanEle{display: inline-block;width: 16%;height: 100%;text-align: left;vertical-align: middle;line-height: 30px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;overflow: hidden;float: left;}
+.row .spanOneEle{position: absolute;display: inline-block;width: 65%;height: 30px;text-align: left;vertical-align: middle;line-height: 30px;white-space: nowrap;text-overflow: ellipsis;word-break: break-all;overflow: hidden;float: left;}
+.row .spanEle input[type="text"],.row .spanOneEle input[type="text"]{border-radius: 3px;width: 80%;height: 28px;line-height: 28px;
+padding-top: 0px;padding-bottom: 0px;padding-left: 5px;padding-right: 5px;
+border:1px solid #b0bec7;}
+.row .spanOneEle span{border-radius: 3px;width: 80%;height: 28px;line-height: 28px;
+padding-top: 0px;padding-bottom: 0px;padding-left: 5px;padding-right: 5px;
+border:1px solid #b0bec7;position: absolute;}
+.row .spanOneEle select{border-radius: 3px;width: 20%;height: 28px;line-height: 28px;padding-top: 0px;padding-bottom: 0px;padding-left: 5px;padding-right: 5px;border: 1px solid #b0bec7;position: absolute;}
+.row .searh{display: inline-block;width: 100%;height: 100%;text-align: right;vertical-align: middle;line-height: 30px;text-align: right;}
+.row .searh .buttonCls{width: 80px;height: 28px;line-height: 28px;font-size: 13px;border-radius: 10px;
+background-color: #54B9FF;border: none;color: white;text-align: center;text-decoration: none;display: inline-block;cursor: pointer;margin-right: 10px;float: right;}
+.row.content{
+position: absolute;bottom: 0px;left: 0px;top: 76px;height: auto;
+}
+.colPix{margin-left: 20px;}
+.row .searh .buttonCls.lastBtnCls {margin-right: 70px;}
+.row .searh .buttonCls:HOVER{
+	background-color:#2E8B57;
+}
+.row.content table{
+	width: 100%;border-collapse: collapse;border-spacing: 0;border:1px solid #ccc;background-color: #fff;table-layout: fixed;word-break: break-all;word-wrap: break-word;
+}
+.row.content table thead tr{background-color: #FFF;}
+.row.content table thead tr th,.row.content table tbody tr td{
+	height: 30px;border:1px solid #ccc;
+}
+.row.content table tbody tr{
+	cursor: pointer;
+}
+.row.content table tbody tr:HOVER{
+	background-color: #84C1FF!important;
+}
+.row.content table tbody tr.interleave{
+	background-color: #eee;
+}
+.row.content table tbody tr td{
+	text-indent: 5px;word-wrap: normal;overflow: hidden;width: 100%;white-space: nowrap;-ms-text-overflow: ellipsis;-o-text-overflow: ellipsis;text-overflow: ellipsis;word-break: keep-all;
+}
+.row.content table tbody tr td.center{
+	text-align: center;text-indent: 0px;
+}
+.row.content .pageTool{
+	width: auto;height: 32px;text-align: left;vertical-align: middle;line-height: 32px;background-color: #FFF;padding-top: 5px;padding-left: 30px;
+}
