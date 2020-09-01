@@ -1,0 +1,33 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+#ruleTypeSet.wrap {
+    margin: 10px auto;
+    width: 200px;
+    height: 100px;
+    /*border: 1px solid #00B4E1;*/
+    position: relative;
+}
+#ruleTypeSet.wrap .row select{
+float: left;
+width: 100%;
+text-align: center;
+font-size: 12px;
+color: #333;
+padding-right: 0px;
+border-radius: 15px;
+border: solid 1px #f3f3f3;
+padding-left: 0px;
+position: relative;
+height: 30px;
+vertical-align: middle;
+line-height: 30px;
+}
+#ruleSetTips.layui-layer-content{
+	padding:5px 5px;
+}
+#ruleSetTips.layui-layer-content ul li:HOVER{
+	background-color: #2f698c!important;
+}

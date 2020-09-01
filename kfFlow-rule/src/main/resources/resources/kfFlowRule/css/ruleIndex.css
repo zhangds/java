@@ -1,0 +1,45 @@
+@charset "UTF-8";
+*{
+	padding: 0px;
+	margin: 0px;
+}
+body#ruleIndexBody{padding-top: 10px;}
+body#ruleIndexBody .ruleIndex.wrap{
+	width: 630px;
+	margin: 0 auto;
+	border:1px solid #00B4E1;
+}
+body#ruleIndexBody .ruleIndex.wrap .row div.titleCls{
+	text-align:left;width: 100%;padding-right:0px;background-color: #00B7FF;color: #FFF;text-indent: 2em;font-size: 14px;
+}
+body#ruleIndexBody .ruleIndex.wrap .row div.ruleZtree{
+	width: 100%;
+	height: 100%;
+}
+body#ruleIndexBody .ruleIndex.wrap > div.row.title{
+	margin-top:0px;border: 1px solid #00B4E1;
+}
+body#ruleIndexBody .ruleIndex.wrap > div.row.contentArea {
+	margin-top:0px;height: auto;height: 430px;border: 1px solid #00B4E1;
+}
+body#ruleIndexBody .ruleIndex.wrap > div.row.contentArea > div.spanEle{
+	width:100%;height: 100%;overflow:auto;
+}
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconParam_ico_docu,
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconParam_ico_open,
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconParam_ico_close
+{
+	margin-right:2px; background: url(../image/param.png) no-repeat scroll 0 0 transparent;background-position: 3px 3px; vertical-align:top; *vertical-align:middle
+}
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconCondition_ico_docu,
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconCondition_ico_open,
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconCondition_ico_close
+{
+	margin-right:2px; background: url(../image/condition.png) no-repeat scroll 0 0 transparent;background-position: 3px 3px; vertical-align:top; *vertical-align:middle
+}
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconAction_ico_docu,
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconAction_ico_open,
+body#ruleIndexBody .ruleIndex.wrap .ztree li span.button.iconAction_ico_close
+{
+	margin-right:2px; background: url(../image/action.png) no-repeat scroll 0 0 transparent;background-position: 3px 3px; vertical-align:top; *vertical-align:middle
+}

@@ -1,0 +1,71 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+}
+.setParamRule.wrap{
+	margin: 10px auto;
+    width: 640px;
+	height: 410px;
+    border: 1px solid #00B4E1;
+    position: relative;
+    font-size: 13px;
+}
+
+.setParamRule.wrap .spanEle select{
+    border-radius: 5px;
+    width: 90%;
+    height: 28px;
+    line-height: 28px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid #b0bec7;
+}
+
+.setParamRule.wrap .row .spanEle table{
+    width: 40%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    word-break: break-all;
+    word-wrap: break-word;
+    font-size: 12px;
+    background-color: #fff;
+}
+
+.setParamRule.wrap .row .spanEle table thead{
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    background-color: #FFF;
+    text-align: center;
+    text-indent: 0px;
+}
+
+.setParamRule.wrap .row .spanEle table thead th,
+.setParamRule.wrap .row .spanEle table tbody tr td{
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.setParamRule.wrap .row .spanEle table tbody tr.interleave {
+    background-color: #eee;
+}
+
+.setParamRule.wrap .row .spanEle table tbody tr td {
+    text-indent: 5px;
+    word-wrap: normal;
+    overflow: hidden;
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+.setParamRule.wrap .row .spanEle table tbody tr:hover{
+    background-color: #84C1FF !important;
+    cursor: pointer;
+}

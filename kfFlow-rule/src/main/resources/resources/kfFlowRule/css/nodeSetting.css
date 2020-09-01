@@ -1,0 +1,163 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.wrap {
+	margin: 10px auto;
+	width: 700px;
+	height: 490px;
+	border: 1px solid #00B4E1;
+	position: relative;
+}
+
+label {
+	width: 100px;
+	height: 30px;
+	float: left;
+	text-align: center;
+	line-height: 30px;
+	border-right: 1px solid #00B4E1;
+	border-bottom: 1px solid #00B4E1;
+}
+
+label:nth-of-type(7) {
+	border-right: none;
+}
+
+label span {
+	cursor: pointer;
+	font-size: 13px;
+	color: #333;
+}
+
+label div.content {
+	width: 700px;
+	height: 459px;
+	position: absolute;
+	left: 0;
+	top: 31px;
+	background: #eeeeee;
+	display: none;
+}
+
+label input[type="radio"] {
+	width: 13px;
+}
+
+input:checked+div {
+	display: block;
+}
+
+label div.content div.row.qryArea {
+	text-align: left;
+}
+
+.content .row .spanEle table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	word-break: break-all;
+	word-wrap: break-word;
+	background-color: #fff;
+	table-layout: fixed;
+	width: 97%;
+	height: auto;
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+	border: 1px solid #00B4E1;
+	font-size: 12px;
+}
+
+.content .row .spanEle table thead tr {
+	background-color: #FFF;
+	text-align: center;
+	text-indent: 0px;
+}
+
+.content .row .spanEle table tbody tr.interleave {
+    background-color: #eee;
+}
+
+.content .row .spanEle table thead tr th
+,.content .row .spanEle table tbody tr td{
+	height: 30px;
+	border: 1px solid #ccc;
+}
+
+.content .row .spanEle table tbody tr td {
+	text-indent: 5px;
+	word-wrap: normal;
+	overflow: hidden;
+	white-space: nowrap;
+	-ms-text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	word-break: keep-all;
+	height: 30px;
+	border: 1px solid #ccc;
+}
+
+.content .row .spanEle table tbody tr:HOVER {
+	background-color: #84C1FF !important;
+}
+#ruleSetTips ul li{
+	cursor: pointer;
+}
+#ruleSetTips ul li:hover{
+	color:#000;
+	background-color:#FFF
+}
+.ztree li span.button.iconParam_ico_docu,
+.ztree li span.button.iconParam_ico_open,
+.ztree li span.button.iconParam_ico_close
+{
+	margin-right:2px; background: url(../image/param.png) no-repeat scroll 0 0 transparent;background-position: 3px 3px; vertical-align:top; *vertical-align:middle
+}
+.ztree li span.button.iconCondition_ico_docu,
+.ztree li span.button.iconCondition_ico_open,
+.ztree li span.button.iconCondition_ico_close
+{
+	margin-right:2px; background: url(../image/condition.png) no-repeat scroll 0 0 transparent;background-position: 3px 3px; vertical-align:top; *vertical-align:middle
+}
+.ztree li span.button.iconAction_ico_docu,
+.ztree li span.button.iconAction_ico_open,
+.ztree li span.button.iconAction_ico_close
+{
+	margin-right:2px; background: url(../image/action.png) no-repeat scroll 0 0 transparent;background-position: 3px 3px; vertical-align:top; *vertical-align:middle
+}
+#actSet .content .row table#actSetTable tbody tr td span.spanImg{
+	background: url(../image/toright.png) no-repeat scroll 0 0 transparent;
+	background-position-x: 0px;
+	background-position-y: 0px;
+	background-position: 3px 3px;
+	/*vertical-align: top;*/
+	vertical-align: middle;
+	line-height: 0;
+	margin: 0;
+	padding: 0;
+	width: 21px;
+	height: 21px;
+	display: inline-block;
+	vertical-align: middle;
+	border: 0 none;
+	outline: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+}
+#actSet .content .row table#actSetTable tbody{
+	cursor: pointer;
+}
+table#backFormTable > tbody > tr > td > .buttonCls,
+table#addZRDXTable > tbody > tr > td > .buttonCls{
+	width: 80px;height: 26px;line-height: 26px;font-size: 12px;border-radius: 5px;background-color: #54B9FF;border: none;color: white;text-align: center;text-decoration: none;display: inline-block;cursor: pointer;
+}
+table#backFormTable > tbody > tr > td > .buttonCls:hover,
+table#addZRDXTable > tbody > tr > td > .buttonCls:hover{
+	background-color: #2E8B57;
+}
+
