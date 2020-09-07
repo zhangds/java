@@ -25,4 +25,6 @@ public interface FlowEngineService {
 	 * Description: 驱动工作流实例到下一步
 	*/
 	public Map<String,Object> toNextStep(String staffno,String workCaseId,String flowId,String nodeId,String lineId,String serviceId,String userGroupId,String paramJson);
+	
+	public Map<String,Object> getFlowNodeGroup(String staffno,String workCaseId,String flowId,String nodeId,String serviceId,String paramJson);
 }

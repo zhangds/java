@@ -69,4 +69,22 @@ public class FlowEngineController {
 		
 		return null;
 	}
+	
+	@RequestMapping(value="/getFlowNodeGroup",method={RequestMethod.POST,RequestMethod.GET})
+	@ApiOperation(value = "工作流指定节点工作组", notes = "获取工作流指定节点工作组，不管实际节点是否可以走到")
+	@ResponseBody
+	public Object getFlowNodeGroup(@RequestParam(defaultValue = "") String staffno,
+			@RequestParam(defaultValue = "") String workCaseId,
+			@RequestParam(defaultValue = "") String flowId,
+			@RequestParam(defaultValue = "") String nodeId,
+			@RequestParam(defaultValue = "") String serviceId,
+			@RequestParam(defaultValue = "") String paramJson) {
+
+		//Map<String,Object> result = null;new LinkedHashMap<String,Object>();
+		if ( StringUtils.isNotEmpty(flowId) && StringUtils.isNotEmpty(nodeId) ) {
+			return flowEngineService.getFlowNodeGroup(staffno,workCaseId,flowId,nodeId,serviceId,paramJson);
+		}
+		
+		return null;
+	}
 }

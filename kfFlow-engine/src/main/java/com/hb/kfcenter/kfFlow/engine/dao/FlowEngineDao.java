@@ -3,11 +3,7 @@
  */
 package com.hb.kfcenter.kfFlow.engine.dao;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -388,6 +384,32 @@ public class FlowEngineDao implements FlowEngineService {
 			}
 		} catch (Exception e) {
 			log.error("执行工作流路径出错！flowId:"+flowId+",工单实例ID:"+workCaseId);
+			result.put("flag", false);
+			result.put("msg", "执行工作流路径出错！flowId:"+flowId+",工单实例ID:"+workCaseId);
+		}
+
+		return result;
+	}
+
+	@Override
+	public Map<String, Object> getFlowNodeGroup(String staffno, String workCaseId, String flowId, String nodeId,
+			String serviceId, String paramJson) {
+		Map<String, Object> result = new LinkedHashMap<String, Object>();
+		try {
+			List<NodeBean> _nodes = flowEngineDataService.getNodesByFlowId(flowId);
+			NodeBean currentNode = null;
+			if (_nodes != null) {
+				List<NodeBean> _findNodes = _nodes.stream().filter(nodeBean -> nodeId.equalsIgnoreCase(nodeBean.getId())).collect(Collectors.toList());
+				currentNode = _findNodes != null && _findNodes.size() >0 ?_findNodes.get(0):null;
+				if (currentNode != null) {
+					Map<String,String> jsonMap = helpUtilService.getJsonStringToLevelMap(paramJson);
+					jsonMap = flowEngineDataService.addOtherValue(workCaseId,serviceId,jsonMap);
+					setNodeGroupIds(workCaseId,serviceId,jsonMap,flowId,currentNode,currentNode);
+					result.put("data", currentNode);
+				}
+			}
+		} catch (Exception e) {
+			log.error("获取工作流指定节点出错！flowId:"+flowId+",工单实例ID:"+workCaseId);
 			result.put("flag", false);
 			result.put("msg", "执行工作流路径出错！flowId:"+flowId+",工单实例ID:"+workCaseId);
 		}
