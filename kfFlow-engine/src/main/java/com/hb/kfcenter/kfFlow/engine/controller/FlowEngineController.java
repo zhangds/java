@@ -87,4 +87,18 @@ public class FlowEngineController {
 		
 		return null;
 	}
+	
+	@RequestMapping(value="/setBackOption",method={RequestMethod.POST,RequestMethod.GET})
+	@ApiOperation(value = "追单操作", notes = "将运行状态的工作流进行退回节点操作")
+	@ResponseBody
+	public Object getFlowNodeGroup(@RequestParam(defaultValue = "") String staffno,
+			@RequestParam(defaultValue = "") String workCaseId,
+			@RequestParam(defaultValue = "1") int step) {
+
+		if ( StringUtils.isNotEmpty(staffno) && StringUtils.isNotEmpty(workCaseId) && step >0) {
+			return flowEngineService.setBackOption(staffno,workCaseId,step);
+		}
+		
+		return null;
+	}
 }

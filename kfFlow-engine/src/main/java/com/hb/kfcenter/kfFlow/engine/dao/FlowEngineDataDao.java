@@ -208,7 +208,8 @@ public class FlowEngineDataDao implements FlowEngineDataService {
 		return null;
 	}
 	
-	private static final String SELECT_PRENODEGROUP_SQL = "select * from ( select STEPID,(select NODE_NAME from T_WORKFLOW_NODES where NODE_ID=a.STEPID and WK_ID in (select WK_ID from T_WORKFLOW_INIT where FORM_ID=a.FORMID)) node_name,GROUPID,(select group_name from T_WORKFLOW_WORKGROUP c where c.GROUP_ID=a.GROUPID) group_name,(select CITY_ID from T_WORKFLOW_WORKGROUP c where c.GROUP_ID=a.GROUPID) group_city from T_WORKFLOW_NODE_STEPLOG a where a.FORMID=? order by CREATE_DT desc) b where ROWNUM<=2";
+	private static final String SELECT_PRENODEGROUP_SQL = "select * from ( select STEPID,USERID,(select NODE_NAME from T_WORKFLOW_NODES where NODE_ID=a.STEPID and WK_ID in (select WK_ID from T_WORKFLOW_INIT where FORM_ID=a.FORMID)) node_name,GROUPID,(select group_name from T_WORKFLOW_WORKGROUP c where c.GROUP_ID=a.GROUPID) group_name,(select CITY_ID from T_WORKFLOW_WORKGROUP c where c.GROUP_ID=a.GROUPID) group_city from T_WORKFLOW_NODE_STEPLOG a where a.FORMID=? order by CREATE_DT desc) b where ROWNUM<=2";
+	
 	private Map<String,String> getHistoryNodeParam(String workCaseId) {
 		if (StringUtils.isNotEmpty(workCaseId)) {
 			try {
@@ -228,6 +229,7 @@ public class FlowEngineDataDao implements FlowEngineDataService {
 										resultMap.put("preNode.GROUP_ID", rs.getString("GROUPID"));
 										resultMap.put("preNode.GROUP_NAME", rs.getString("GROUP_NAME"));
 										resultMap.put("preNode.GROUP_CITY", rs.getString("GROUP_CITY"));
+										resultMap.put("preNode.USERID", rs.getString("USERID"));
 									}
 								}
 								return resultMap;

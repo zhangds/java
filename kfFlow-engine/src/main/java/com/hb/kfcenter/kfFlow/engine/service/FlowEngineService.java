@@ -27,4 +27,6 @@ public interface FlowEngineService {
 	public Map<String,Object> toNextStep(String staffno,String workCaseId,String flowId,String nodeId,String lineId,String serviceId,String userGroupId,String paramJson);
 	
 	public Map<String,Object> getFlowNodeGroup(String staffno,String workCaseId,String flowId,String nodeId,String serviceId,String paramJson);
+	
+	public Map<String,Object> setBackOption(String staffno,String workCaseId,int step);
 }

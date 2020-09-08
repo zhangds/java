@@ -23,4 +23,6 @@ public interface FlowEngineDriverService {
 	public Map<String, Object> checkAndDriverToNext(int flag,FlowInitBean flowInit,NodeBean currentNode,
 			String staffno,String userGroupId,String flowId,String nodeId,String lineId,
 			String workCaseId,String serviceId,String paramJson);
+	
+	public boolean setStepToHistory(String staffno, String workCaseId,int step);
 }

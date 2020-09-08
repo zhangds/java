@@ -416,5 +416,17 @@ public class FlowEngineDao implements FlowEngineService {
 
 		return result;
 	}
+	
+	@Override
+	public Map<String, Object> setBackOption(String staffno, String workCaseId,int step) {
+		Map<String, Object> result = new LinkedHashMap<String, Object>() ;
+		if (StringUtils.isNotEmpty(staffno) && StringUtils.isNotEmpty(workCaseId)) {
+			String[] formIds = workCaseId.contains(",") ? workCaseId.split(",") : new String[] {workCaseId};
+			for (String _formId : formIds) {
+				result.put(_formId, flowEngineDriverService.setStepToHistory(staffno,_formId,step));
+			}
+		}
+		return result;
+	}
 
 }

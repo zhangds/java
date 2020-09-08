@@ -3,6 +3,9 @@
  */
 package com.hb.kfcenter.kfFlow.engine.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +15,8 @@ import javax.sql.DataSource;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -168,4 +173,48 @@ public class FlowEngineDriverDao implements FlowEngineDriverService {
 		}
 		return false;
 	}
+	
+	private final static String SELECT_HISTORY_SQL = "select * from (select STEPID,USERID, GROUPID,STATE,TAG from T_WORKFLOW_NODE_STEPLOG a where a.FORMID=? order by CREATE_DT desc) b where ROWNUM<=?";
+	private Map<String,String> getHistory(String workCaseId,int step) {
+		return jdbcTemplate.query(SELECT_HISTORY_SQL,new Object[] {workCaseId,step+1},
+				new ResultSetExtractor<Map<String,String>>(){
+					@Override
+					public Map<String, String> extractData(ResultSet rs) throws SQLException, DataAccessException {
+						int _count =0;
+						Map<String, String> map = new HashMap<String, String>(3);
+						while (rs.next()) {
+							_count ++;
+							if (_count == step+1) {
+								String _state = rs.getString("STATE");
+								String _tag = rs.getString("TAG");
+								if ("活动".equalsIgnoreCase(_state) && StringUtils.isNotEmpty(_tag) && (_tag.contains("原") || _tag.contains("新"))) {
+									map.put("STEPID", rs.getString("STEPID"));
+									map.put("USERID", rs.getString("USERID"));
+									map.put("GROUPID", rs.getString("GROUPID"));
+								}
+							}
+						}
+						return map;
+					}
+		});
+	}
+	
+	private final static String UPDATE_FLINIT_SQL = "update T_WORKFLOW_INIT set STEP_ID=?,GROUP_ID=?,USER_ID=?,STATES_DT=sysdate where FORM_ID =?";
+	public boolean setStepToHistory(String staffno, String workCaseId,int step) {
+		boolean flag = false;
+		try {
+			if (StringUtils.isNotEmpty(staffno) && StringUtils.isNotEmpty(workCaseId) && step >0) {
+				Map<String,String> map = getHistory(workCaseId,step);
+				if (map != null && map.containsKey("USERID") && staffno.equals(map.get("USERID")) &&
+						map.containsKey("STEPID") && StringUtils.isNotEmpty(map.get("STEPID")) &&
+						map.containsKey("GROUPID") && StringUtils.isNotEmpty(map.get("GROUPID")) ) {
+					jdbcTemplate.update(UPDATE_FLINIT_SQL,new Object[] {map.get("STEPID"),map.get("GROUPID"),staffno,workCaseId});
+					flag = true;
+				}
+			}
+		} catch (Exception e) {
+		}
+		return flag;
+	}
+	
 }
