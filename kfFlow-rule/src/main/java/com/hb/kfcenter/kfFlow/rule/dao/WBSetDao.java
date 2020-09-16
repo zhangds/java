@@ -55,14 +55,14 @@ public class WBSetDao implements WBSetService {
 	}
 	
 	private static final String DEL_WBEXTEND_SQL = "delete from T_WORKFLOW_WBEXTEND_SET where WK_ID=? AND NODE_ID=?";
-	private static final String INSERT_WBEXTEND_SQL = "insert into T_WORKFLOW_WBEXTEND_SET(wk_id, node_id, sysid, classz, mothod) values(?,?,?,?,?)";
+	private static final String INSERT_WBEXTEND_SQL = "insert into T_WORKFLOW_WBEXTEND_SET(wk_id, node_id, sysid, classz, mothod, pd_wk_id) values(?,?,?,?,?,?)";
 	@Override
 	public Map<String, Object> setCurrentNodeWbExtendConfig(String flowId, String nodeId, String sysId, String mothodId,
-			String classZ) {
+			String classZ,String pdIds) {
 		Map<String, Object> map = new LinkedHashMap<String, Object>(2);
 		try {
 			jdbcTemplate.update(DEL_WBEXTEND_SQL, new Object[] {flowId,nodeId});
-			jdbcTemplate.update(INSERT_WBEXTEND_SQL, new Object[] {flowId, nodeId, sysId, classZ,mothodId});
+			jdbcTemplate.update(INSERT_WBEXTEND_SQL, new Object[] {flowId, nodeId, sysId, classZ,mothodId,pdIds});
 			map.put("flag", true);
 		} catch (Exception e) {
 			map.put("flag", false);
@@ -70,7 +70,7 @@ public class WBSetDao implements WBSetService {
 		return map;
 	}
 	
-	private static final String SELECT_CURRENTNODEWBEXTEND_SQL = "select SYSID,MOTHOD from T_WORKFLOW_WBEXTEND_SET where WK_ID=? AND NODE_ID=?";
+	private static final String SELECT_CURRENTNODEWBEXTEND_SQL = "select SYSID,MOTHOD,PD_WK_ID from T_WORKFLOW_WBEXTEND_SET where WK_ID=? AND NODE_ID=?";
 	@Override
 	public String[] getCurrentNodeWbExtend(String flowId, String nodeId) {
 		return jdbcTemplate.query(SELECT_CURRENTNODEWBEXTEND_SQL,new Object[] {flowId,nodeId},
@@ -78,10 +78,11 @@ public class WBSetDao implements WBSetService {
 
 					@Override
 					public String[] extractData(ResultSet rs) throws SQLException, DataAccessException {
-						String[] _string = new String[2];
+						String[] _string = new String[3];
 						while (rs.next()) {
 							_string[0] = rs.getString("SYSID");
 							_string[1] = rs.getString("MOTHOD");
+							_string[2] = rs.getString("PD_WK_ID");
 						}
 						return _string;
 					}

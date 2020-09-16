@@ -403,8 +403,9 @@ public class FlowRuleController {
 			@RequestParam(defaultValue = "") String nodeId,
 			@RequestParam(defaultValue = "") String sysId,
 			@RequestParam(defaultValue = "") String mothodId,
-			@RequestParam(defaultValue = "") String classZ,Model model) {
+			@RequestParam(defaultValue = "") String classZ,
+			@RequestParam(defaultValue = "") String pdIds,Model model) {
 
-		return wbSetService.setCurrentNodeWbExtendConfig(flowId,nodeId,sysId,mothodId,classZ);
+		return wbSetService.setCurrentNodeWbExtendConfig(flowId,nodeId,sysId,mothodId,classZ,pdIds);
 	}
 }

@@ -11,6 +11,7 @@ $(function(){
 					    function(){},function(){alert('初始化外部接口参数错误!');});
 			$("#wbSet .content .row .spanTitle > .searh > .buttonCls.saveWbSet").off("click")
 			.on("click",function(){
+				var _pdIds = $("#wbSet .content .row .spanEle input#wbPdIds").val();
 				var _sysId = $("#wbSet .content .row .spanEle select#wbSysSelect").val();
 				var _mothodId = $("#wbSet .content .row .spanEle select#wbSysMothodSelect").val();
 				if (!_sysId){
@@ -40,7 +41,7 @@ $(function(){
 						{"r":new Date().getTime(),"staffno":workGroupInfo.staffno,
 						 "flowId":workGroupInfo.flowId,"nodeId":workGroupInfo.nodeId,
 						 "sysId":_currentData.id,"mothodId":_currentData.md,
-						 "classZ":_currentData.path
+						 "classZ":_currentData.path,"pdIds" : _pdIds
 						},
 					    wbSet.okEvent,true,
 					    function(){},function(){alert('初始化外部接口参数错误!');});
@@ -83,7 +84,8 @@ $(function(){
 			$("#wbSet .content .row .spanEle select#wbSysMothodSelect").empty()
 				.html(WebUtil.template(wbSet.selectHtml,{"datas":_datas}));
 
-			if (data && data.set && data.set.length ==2 && data.set[0] && data.set[1]){
+			if (data && data.set && data.set.length ==3 && data.set[0] && data.set[1] && data.set[2]){
+				$("#wbSet .content .row .spanEle input#wbPdIds").val(data.set[2]);
 				$("#wbSet .content .row .spanEle select#wbSysSelect").val(data.set[0]);
 				$("#wbSet .content .row .spanEle select#wbSysMothodSelect").val(data.set[1]);
 			}

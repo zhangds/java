@@ -21,5 +21,5 @@ public interface WBSetService {
 	
 	public String[] getCurrentNodeWbExtend(String flowId,String nodeId);
 	
-	public Map<String,Object> setCurrentNodeWbExtendConfig(String flowId,String nodeId,String sysId,String mothodId,String classZ);
+	public Map<String,Object> setCurrentNodeWbExtendConfig(String flowId,String nodeId,String sysId,String mothodId,String classZ,String pdIds);
 }

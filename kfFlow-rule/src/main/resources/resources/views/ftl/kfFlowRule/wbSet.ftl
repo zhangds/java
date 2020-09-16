@@ -1,5 +1,13 @@
 <div class="row">
 	<div class="spanTitle" style="width: 18%">
+		执行判断条件
+	</div>
+	<div class="spanEle" style="width: 50%">
+		<input type="text" id="wbPdIds" value="*" style="width: 90%;border-radius: 3px;height: 28px;line-height: 28px;padding-top: 0px;padding-bottom: 0px;padding-left: 5px;padding-right: 5px;border: 1px solid #b0bec7;">
+	</div>
+</div>
+<div class="row">
+	<div class="spanTitle" style="width: 18%">
 		系统名
 	</div>
 	<div class="spanEle" style="width: 50%">
