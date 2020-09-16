@@ -5,9 +5,11 @@ package com.hb.kfcenter.kfFlow.engine.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
@@ -289,9 +291,9 @@ public class FlowEngineDataDao implements FlowEngineDataService {
 		return null;
 	}
 	
-	private static final String SELECT_WBEXTEND_SQL = "select CLASSZ,MOTHOD from T_WORKFLOW_WBEXTEND_SET where WK_ID=? AND NODE_ID=? and STATES='00A'";
+	private static final String SELECT_WBEXTEND_SQL = "select CLASSZ,MOTHOD,PD_WK_ID from T_WORKFLOW_WBEXTEND_SET where WK_ID=? AND NODE_ID=? and STATES='00A'";
 	@Override
-	public String[] getWBExtend(String flowId, String nodeId) {
+	public String[] getWBExtend(String flowId, String nodeId,String userGroupId) {
 		return jdbcTemplate.query(SELECT_WBEXTEND_SQL,new Object[] {flowId,nodeId},
 				new ResultSetExtractor<String[]>() {
 
@@ -299,8 +301,18 @@ public class FlowEngineDataDao implements FlowEngineDataService {
 					public String[] extractData(ResultSet rs) throws SQLException, DataAccessException {
 						String[] _string = new String[2];
 						while (rs.next()) {
-							_string[0] = rs.getString("CLASSZ");
-							_string[1] = rs.getString("MOTHOD");
+							String _pd = rs.getString("PD_WK_ID");
+							if (StringUtils.isNotEmpty(_pd) && StringUtils.isNotEmpty(userGroupId)) {
+								String[] _strs = _pd.split(";");
+								List<String> list = Arrays.asList(_strs).stream().filter(oneGroup -> userGroupId.equalsIgnoreCase(oneGroup)).collect(Collectors.toList());
+								if ("*".equals(_pd) || (list != null && list.size()>0)) {
+									_string[0] = rs.getString("CLASSZ");
+									_string[1] = rs.getString("MOTHOD");
+								}
+							}else {
+								_string[0] = rs.getString("CLASSZ");
+								_string[1] = rs.getString("MOTHOD");
+							}
 						}
 						return _string;
 					}

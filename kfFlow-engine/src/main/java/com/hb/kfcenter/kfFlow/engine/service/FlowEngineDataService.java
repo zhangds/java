@@ -50,6 +50,6 @@ public interface FlowEngineDataService {
 	
 	public Map<String,String> addOtherValue(String workCaseId,String serviceId,Map<String,String>jsonMap);
 	
-	public String[] getWBExtend(String flowId,String nodeId);
+	public String[] getWBExtend(String flowId,String nodeId,String userGroupId);
 	
 }

@@ -369,7 +369,7 @@ public class FlowEngineDao implements FlowEngineService {
 				result.put("limitDt", nextNode.getLimitDt());
 				result.put("stepLimitDt", nextNode.getStepLimitDt());
 				try {
-					String[] _string = flowEngineDataService.getWBExtend(flowId, nextNode.getId());
+					String[] _string = flowEngineDataService.getWBExtend(flowId, nextNode.getId(),userGroupId);
 					if (_string != null && _string.length ==2 && StringUtils.isNotEmpty(_string[0]) 
 							&& StringUtils.isNotEmpty(_string[1]) ) {
 						WbExtendDao d = BeanFactory.getBean(WbExtendDao.class);
