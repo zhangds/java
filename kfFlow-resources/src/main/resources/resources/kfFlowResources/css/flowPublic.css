@@ -45,6 +45,27 @@ position: absolute;bottom: 0px;left: 0px;top: 76px;height: auto;
 .row.content table tbody tr td.center{
 	text-align: center;text-indent: 0px;
 }
+.row.content table tbody tr td > div.buttonCls{
+	width: 60px;
+	height: 22px;
+	line-height: 22px;
+	font-size: 13px;
+	border-radius: 10px;
+	background-color: #54B9FF;
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 10px;
+	float: right;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+.row.content table tbody tr td > div.buttonCls:hover{
+	background-color:#2E8B57!important;
+}
 .row.content .pageTool{
 	width: auto;height: 32px;text-align: left;vertical-align: middle;line-height: 32px;background-color: #FFF;padding-top: 5px;padding-left: 30px;
 }
