@@ -19,6 +19,20 @@ $(function(){
 		    		WebUtil.layerOpen(false,[ '800px','400px' ],'../FlowWebDesign/detail?staffno='+$(this).attr("staffno")+"&flowId="+_temp);
 		    	}
 			});
+			$(".row .searh .buttonCls.copy").off("click").on("click",function(){
+				var _temp = $("#radioFlowId:checked").val();
+				var _staffno = $(this).attr("staffno");
+		    	if (_temp== null){
+		    		layer.alert('请选择需要复制的工作流!', {title:"提示:",icon: 6});
+		    	}else{
+		    		layer.prompt({title: '输入新流程ID，并确认', formType: 3}, function(text, index){
+		    			  layer.close(index);
+		    			  WebUtil.ajax("POST","../FlowWebDesign/copyFlowToNew",
+									{"staffno":_staffno,"flowId":text,"oFlowId":_temp},managerPage.copyEvent,true);
+		    		});
+		    	}
+			});
+			
 		},
 		find : function (){
 			//alert(1);
@@ -26,6 +40,13 @@ $(function(){
 					{"wkId":$(".row #wkId").val(),
 				"wkName":$(".row #wkName").val(),
 				"wkRemark":$(".row #wkRemark").val()},this.success,true);
+		},
+		copyIndex : null,
+		copyEvent : function (data){
+			if (managerPage.copyIndex)
+				layer.close(managerPage.copyIndex);
+			console.log(data);
+			managerPage.find();
 		},
 		success :function (data){
 			if (data != null){

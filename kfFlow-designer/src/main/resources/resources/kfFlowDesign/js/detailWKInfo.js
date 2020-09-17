@@ -28,7 +28,8 @@ $(function(){
 			},
 			successEvent : function (data){
 				if (data && data.msg){
-            		layer.alert(data.msg, {title:"提示:",icon: 6});
+            		//layer.alert(data.msg, {title:"提示:",icon: 6});
+					alert(data.msg);
             	}
 			},
 			completeEvent : function(){

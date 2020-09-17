@@ -28,12 +28,13 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="searh"> 
-			<div class="buttonCls update lastBtnCls" staffno="${staffno!''}">修改</div>
+		<div class="searh">
+			<div class="buttonCls copy lastBtnCls" staffno="${staffno!''}">复制</div>
+			<div class="buttonCls update" staffno="${staffno!''}">修改</div>
 			<div class="buttonCls add" staffno="${staffno!''}">新增</div>
 			<div class="buttonCls qry" staffno="${staffno!''}">查询</div>
-			<div class="buttonCls limit" staffno="${staffno!''}">流程时限</div>
 			<!--
+			<div class="buttonCls limit" staffno="${staffno!''}">流程时限</div>
 			<div class="buttonCls fir" staffno="${staffno!''}">首派</div>
 			-->
 		</div>

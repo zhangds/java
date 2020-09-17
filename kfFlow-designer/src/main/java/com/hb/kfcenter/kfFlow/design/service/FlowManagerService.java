@@ -26,5 +26,5 @@ public interface FlowManagerService {
 	public boolean updateWorkFlow(WorkFlowBean dao);
 	public String getFlowJson(String flowId);
 	public boolean saveDesignWorkflow(String flowId,String flowJson,String staffno);
-	
+	public Map<String,Object> copyOldFlowToNewFlow(String flowId,String oFlowId,String staffno);
 }

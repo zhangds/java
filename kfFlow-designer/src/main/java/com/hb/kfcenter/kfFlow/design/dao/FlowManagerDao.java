@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -438,6 +439,45 @@ public class FlowManagerDao implements FlowManagerService{
 			return true;
 		}
 		return false;
+	}
+
+	private static final String CHECK_FLOW_SQL = "select count(1) from T_WORKFLOW where wk_id=?";
+	private static final String INSERT_FLOW_SQL = "insert into T_WORKFLOW select ''{0}'' as wk_id, wk_name, wk_remark,''{1}'' as creater_id,sysdate as create_dt,''V1.0'' curr_version, def_form,wk_state,''{1}'' as updater_id from T_WORKFLOW where wk_id=''{2}''";
+	private static final String DELETE_WORKSET_SQL ="delete from T_WORKFLOW_WORKGROUPSET_NEW where WK_ID=''{0}''";
+	private static final String INSERT_COPY_FLOWNODE_SQL = "insert into T_WORKFLOW_NODES select node_id,''{0}'' as wk_id, node_name, node_type, top, left, width, height from T_WORKFLOW_NODES where WK_ID=''{1}''";
+	private static final String INSERT_COPY_FLOWLINE_SQL = "insert into T_WORKFLOW_ACT select act_id,''{0}'' as wk_id, act_name, pre_node_id, next_node_id, type from T_WORKFLOW_ACT where WK_ID=''{1}''";
+	private static final String INSERT_COPY_FLOWAREA_SQL = "insert into T_WORKFLOW_AREA select area_id,''{0}'' as wk_id, area_name, color, top, left, width, height from T_WORKFLOW_AREA where WK_ID=''{1}''";
+	private static final String INSERT_COPY_FLOWWORKGROUP_SQL = "insert into T_WORKFLOW_WORKGROUPSET_NEW select ''{0}'' as wk_id, node_id, group_id, creater, create_date, states from T_WORKFLOW_WORKGROUPSET_NEW where WK_ID=''{1}''";
+	@Override
+	public Map<String,Object> copyOldFlowToNewFlow(String flowId,String oFlowId, String staffno) {
+		Map<String,Object> result = new HashMap<String, Object>(10);
+		try {
+			int count = jdbcTemplate.queryForObject(CHECK_FLOW_SQL, new Object[] {flowId}, Integer.class);
+			if (count >0) {
+				result.put("flag", false);
+				result.put("msg", "新建的流程ID已经存在!");
+			}else {
+				String[] _sqls = new String[9];
+				_sqls[0] = MessageFormat.format(INSERT_FLOW_SQL, flowId,staffno,oFlowId);
+				_sqls[1] = MessageFormat.format(DELETE_NODE_SQL, flowId);
+				_sqls[2] = MessageFormat.format(DELETE_LINE_SQL, flowId);
+				_sqls[3] = MessageFormat.format(DELETE_AREA_SQL, flowId);
+				_sqls[4] = MessageFormat.format(DELETE_WORKSET_SQL, flowId);
+				_sqls[5] = MessageFormat.format(INSERT_COPY_FLOWNODE_SQL, flowId,oFlowId);
+				_sqls[6] = MessageFormat.format(INSERT_COPY_FLOWLINE_SQL, flowId,oFlowId);
+				_sqls[7] = MessageFormat.format(INSERT_COPY_FLOWAREA_SQL, flowId,oFlowId);
+				_sqls[8] = MessageFormat.format(INSERT_COPY_FLOWWORKGROUP_SQL, flowId,oFlowId);
+				jdbcTemplate.batchUpdate(_sqls);
+				result.put("flag", true);
+				result.put("msg", "复制成功!");
+			}
+		} catch (Exception e) {
+			if (log.isDebugEnabled())
+				log.error(e.getLocalizedMessage());
+			result.put("flag", false);
+			result.put("msg", "复制过程中发生错误!");
+		}
+		return result;
 	}
 
 }

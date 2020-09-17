@@ -162,4 +162,13 @@ public class FlowDesignController {
 		return result;
 	}
 	
+	@PostMapping(value = "/copyFlowToNew")
+	@ApiIgnore
+	@ResponseBody
+	public Object copyFlowToNew(@RequestParam(defaultValue = "") String staffno,
+			@RequestParam(defaultValue = "") String flowId,
+			@RequestParam(defaultValue = "") String oFlowId, Model model) {
+		return flowManagerService.copyOldFlowToNewFlow(flowId, oFlowId, staffno);
+	}
+	
 }
