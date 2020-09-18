@@ -75,9 +75,9 @@ $(function(){
 			if (data && data.flag=="true"){
 				workArea.oldGroupIds.push(workArea.addGroupIds);
 				workArea.addGroupIds = [];
-				layer.alert("工作组保存成功!", {title:"提示:",icon: 2});
+				layer.alert("工作组保存成功!", {title:"提示:",icon: 1});
 			}else{
-				layer.alert("工作组保存失败!", {title:"提示:",icon: 3});
+				layer.alert("工作组保存失败!", {title:"提示:",icon: 2});
 			}
 		}
 	};
