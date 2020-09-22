@@ -221,18 +221,19 @@ public class FlowEngineDataDao implements FlowEngineDataService {
 							@Override
 							public Map<String, String> extractData(ResultSet rs) throws SQLException, DataAccessException {
 								Map<String,String> resultMap = new LinkedHashMap<String, String>(5);
-								int count = 1;
+								//int count = 1;
 								while (rs.next()) {
-									if (count == 1) {
-										count ++;
-									}else {
+//									if (count == 1) {
+//										count ++;
+//									}else {
 										resultMap.put("preNode.NODE_ID", rs.getString("STEPID"));
 										resultMap.put("preNode.NODE_NAME", rs.getString("NODE_NAME"));
 										resultMap.put("preNode.GROUP_ID", rs.getString("GROUPID"));
 										resultMap.put("preNode.GROUP_NAME", rs.getString("GROUP_NAME"));
 										resultMap.put("preNode.GROUP_CITY", rs.getString("GROUP_CITY"));
 										resultMap.put("preNode.USERID", rs.getString("USERID"));
-									}
+//									}
+										break;
 								}
 								return resultMap;
 							}
