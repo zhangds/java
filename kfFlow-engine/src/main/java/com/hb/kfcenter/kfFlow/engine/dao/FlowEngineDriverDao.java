@@ -200,6 +200,7 @@ public class FlowEngineDriverDao implements FlowEngineDriverService {
 	}
 	
 	private final static String UPDATE_FLINIT_SQL = "update T_WORKFLOW_INIT set STEP_ID=?,GROUP_ID=?,USER_ID=?,STATES_DT=sysdate where FORM_ID =?";
+	private final static String INSERT_STEPTOHIS_SQL = "INSERT INTO T_WORKFLOW_NODE_STEPLOG(INIT_ID, FORMID, STEPID, USERID, STATE, TAG, GROUPID) VALUES((select distinct init_id from T_WORKFLOW_NODE_STEPLOG where formid=?),?,?, ?, '活动' , '原流程', ?)";
 	public boolean setStepToHistory(String staffno, String workCaseId,int step) {
 		boolean flag = false;
 		try {
@@ -209,10 +210,12 @@ public class FlowEngineDriverDao implements FlowEngineDriverService {
 						map.containsKey("STEPID") && StringUtils.isNotEmpty(map.get("STEPID")) &&
 						map.containsKey("GROUPID") && StringUtils.isNotEmpty(map.get("GROUPID")) ) {
 					jdbcTemplate.update(UPDATE_FLINIT_SQL,new Object[] {map.get("STEPID"),map.get("GROUPID"),staffno,workCaseId});
+					jdbcTemplate.update(INSERT_STEPTOHIS_SQL,new Object[] {workCaseId,workCaseId,map.get("STEPID"),staffno,map.get("GROUPID")});
 					flag = true;
 				}
 			}
 		} catch (Exception e) {
+			log.debug(e.getLocalizedMessage());
 		}
 		return flag;
 	}
