@@ -5,8 +5,9 @@
 					<div class="spanEle" style="width: 24%;">
 						<input type="text" id="wkTxt" />
 					</div>
-					<div class="spanTitle" style="text-align:right;width: 15%;padding-right: 0px;">
+					<div class="spanTitle" style="text-align:right;width: 30%;padding-right: 0px;">
 						<div class="searh">
+							<div class="buttonCls deleteWorkGroup">删除</div>
 							<div class="buttonCls qryKeyWord">查询</div>
 						</div>
 					</div>
@@ -22,10 +23,11 @@
 						<table class="tableDiv" id="tableElent" style="">
 							<thead>
 								<tr>
-									<th style="width: 4%">
+									<th style="width: 6%">
+										<input type="checkbox" name="workGroupSetChectAll" id="selectAll"/>
 									</th>
 									<th style="width: 40%">工作组ID</th>
-									<th style="width: 56%">工作组名称</th>
+									<th style="width: 54%">工作组名称</th>
 								</tr>
 							</thead>
 							<tbody>

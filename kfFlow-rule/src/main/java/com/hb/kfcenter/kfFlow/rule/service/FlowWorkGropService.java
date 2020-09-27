@@ -19,4 +19,5 @@ public interface FlowWorkGropService {
 	public List<WorkGropBean> getWorkGroupBykeyWord(String keyWords);
 	public List<WorkGropBean> getCurrentFlowAndNodeIdByWrokGroups(String flowId,String nodeId);
 	public Map<String,String> saveCurrentNodeWrokGroups(String staffno,String flowId,String nodeId,String groupIds);
+	public Map<String,String> saveDeletetNodeWrokGroups(String staffno, String flowId, String nodeId, String groupIds);
 }

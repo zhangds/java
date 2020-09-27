@@ -69,7 +69,7 @@ public class FlowWorkGropDao implements FlowWorkGropService {
 		});
 	}
 
-	private static final String CURRENT_NODETOGROUP_SQL = "SELECT a.WK_ID ,a.NODE_ID ,a.GROUP_ID,b.GROUP_NAME ,a.CREATER ,a.states FROM T_WORKFLOW_WORKGROUPSET_NEW a,T_WORKFLOW_WORKGROUP b WHERE a.GROUP_ID = b.GROUP_ID AND a.WK_ID =? AND a.NODE_ID =?";
+	private static final String CURRENT_NODETOGROUP_SQL = "SELECT a.WK_ID ,a.NODE_ID ,a.GROUP_ID,b.GROUP_NAME ,a.CREATER ,a.states FROM T_WORKFLOW_WORKGROUPSET_NEW a,T_WORKFLOW_WORKGROUP b WHERE a.GROUP_ID = b.GROUP_ID AND a.states = '00A' AND a.WK_ID =? AND a.NODE_ID =?";
 	
 	@Override
 	public List<WorkGropBean> getCurrentFlowAndNodeIdByWrokGroups(String flowId, String nodeId) {
@@ -131,6 +131,24 @@ public class FlowWorkGropDao implements FlowWorkGropService {
 				map.put("flag", String.valueOf(true));
 			}
 		} catch (Exception e) {
+			map.put("flag", String.valueOf(false));
+		}
+		return map;
+	}
+	@Override
+	public Map<String, String> saveDeletetNodeWrokGroups(String staffno, String flowId, String nodeId,
+			String groupIds) {
+		Map<String, String> map = new HashMap<String,String>();
+		String sql = "update HBKF_ZHFW.T_WORKFLOW_WORKGROUPSET_NEW set STATES = ''00X'' where WK_ID = ''{0}'' and  NODE_ID = ''{1}'' and  GROUP_ID in ({2})";
+		try {
+			int num =jdbcTemplate.update(MessageFormat.format(sql, flowId,nodeId,groupIds));
+			if (num > 0) {
+				map.put("flag", String.valueOf(true));
+			}else{
+				map.put("flag", String.valueOf(false));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 			map.put("flag", String.valueOf(false));
 		}
 		return map;

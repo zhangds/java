@@ -161,3 +161,21 @@ table#addZRDXTable > tbody > tr > td > .buttonCls:hover{
 	background-color: #2E8B57;
 }
 
+
+.mbtn {
+    background-color: #54B9FF;border: none;color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    width:60px;
+    height:20px;
+    line-height:20px;
+    cursor:pointer;
+}
+.txt{
+	height:22px;
+	line-height:22px;
+	width:129px;
+	/* border:solid 1px #ccc; */
+}

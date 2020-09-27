@@ -225,7 +225,7 @@ public class FlowRuleController {
 			result = "kfFlowRule/setConditionRule";
 		}else if ("iconAction".equalsIgnoreCase(ruleType)) {
 			model.addAttribute("selectEle", new LinkedHashMap<String,String>(4){{
-				put("do","执行");put("like","刷选 ");
+				put("do","执行");put("like","筛选 ");
 				//put("execute","接口执行");
 			}});
 			result = "kfFlowRule/setNodeActionRule";
@@ -328,7 +328,7 @@ public class FlowRuleController {
 			if (addDzForms == null || addDzForms.size() == 0) {
 				addDzForms = new ArrayList<BackFormBean>(2) {{
 					add(new BackFormBean() {{
-						setId("dz");setName("定则");;setType("dz");setIsKj("N");setIsBt("N");
+						setId("dz");setName("定责");;setType("dz");setIsKj("N");setIsBt("N");
 					}});
 					add(new BackFormBean() {{
 						setId("jdzqx");setName("记单准确性");setType("jdzqx");setIsKj("N");setIsBt("N");
