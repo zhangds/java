@@ -62,7 +62,7 @@ $(function(){
 				for (var i=0;i<data.configs.length;i++){
 					_datas.push({"key":data.configs[i].md,"value":data.configs[i].mdName});
 					if (data.configs[i].id && data.configs[i].name){
-						console.log(data.configs[i]);
+						//console.log(data.configs[i]);
 						if (wbSet.sysInfos && wbSet.sysInfos.length ==0){
 							wbSet.sysInfos.push({"key":data.configs[i].id,"value":data.configs[i].name});
 						}else {

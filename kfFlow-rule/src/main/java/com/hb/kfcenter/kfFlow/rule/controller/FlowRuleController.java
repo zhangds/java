@@ -248,6 +248,7 @@ public class FlowRuleController {
 			@RequestParam(defaultValue = "") String flowId,
 			@RequestParam(defaultValue = "") String nodeId,
 			@RequestParam(defaultValue = "") String ruleId,
+			@RequestParam(defaultValue = "") String lineId,
 			@RequestParam(defaultValue = "") String opType,
 			@RequestParam(defaultValue = "") String ruleType,
 			@RequestParam(defaultValue = "") String showParam,
@@ -256,7 +257,7 @@ public class FlowRuleController {
 			Model model) {
 		Map<String,Object> map = new LinkedHashMap<String,Object>();
 		try {
-			map.put("flag", flowWrokRuleService.saveOneRuleParam(flowId, nodeId, ruleId,opType, ruleType, showParam, realParam,orderNo));
+			map.put("flag", flowWrokRuleService.saveOneRuleParam(flowId, nodeId, ruleId,opType, ruleType, showParam, realParam,orderNo,lineId));
 //			map.put("showP", showParam);
 //			map.put("realP", realParam);
 		} catch (Exception e) {

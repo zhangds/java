@@ -184,7 +184,7 @@ public class FlowEngineDriverDao implements FlowEngineDriverService {
 						Map<String, String> map = new HashMap<String, String>(3);
 						while (rs.next()) {
 							_count ++;
-							if (_count == step+1) {
+							if (_count == step) {
 								String _state = rs.getString("STATE");
 								String _tag = rs.getString("TAG");
 								if ("活动".equalsIgnoreCase(_state) && StringUtils.isNotEmpty(_tag) && (_tag.contains("原") || _tag.contains("新"))) {

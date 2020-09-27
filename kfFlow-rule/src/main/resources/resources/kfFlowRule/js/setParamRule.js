@@ -37,7 +37,7 @@
 					{"r":new Date().getTime(),"staffno":setParam.staffno,
 				"flowId":setParam.flowId,"nodeId":setParam.nodeId,
 				"ruleId":setParam.ruleId,"ruleType":setParam.ruleType,
-				"opType":setParam.opType,
+				"opType":setParam.opType,"lineId":setParam.lineId,
 				"showParam":setParam.paramTypes[$(this).attr("form")]+"."+$(this).find("td").eq(1)[0].innerText,
 				"realParam":$(this).attr("form")+"."+$(this).attr("fieldId")
 				},

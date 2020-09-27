@@ -23,7 +23,7 @@ public interface FlowWrokRuleService {
 	public boolean saveRule(String staffno,String flowId,String nodeId,String ruleId,String rulePid,String lineId,String opType,String ruleType);
 	public boolean deleCurrentRule(String flowId,String nodeId,String ruleId,String opType);
 	public List<ParamBean> getParamsByType(String flowId,String nodeId,String ruleId,String type,String keyword);
-	public boolean saveOneRuleParam(String flowId,String nodeId,String ruleId,String opType, String ruleType,String showParam, String realParam,String orderNo);
+	public boolean saveOneRuleParam(String flowId,String nodeId,String ruleId,String opType, String ruleType,String showParam, String realParam,String orderNo,String lineId);
 	public List<LineBean> getCurrentNodeToLineAct(String flowId,String nodeId);
 	public List<RuleBean> getCurrentRules(String flowId,String nodeId,String lineId,String opType);
 	public String[] getTimeLimitList(String flowId,String nodeId);

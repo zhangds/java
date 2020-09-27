@@ -25,7 +25,7 @@ $(function(){
 							{"r":new Date().getTime(),"staffno":setCondition.staffno,
 								"flowId":setCondition.flowId,"nodeId":setCondition.nodeId,
 								"ruleId":setCondition.ruleId,"ruleType":setCondition.ruleType,
-								"opType":setCondition.opType,
+								"opType":setCondition.opType,"lineId":setCondition.lineId,
 								"showParam":_math,
 								"realParam":_value
 							},

@@ -23,8 +23,8 @@ public class BackHistory {
 		@SuppressWarnings("serial")
 		Map<String, String> params = new HashMap<String, String>() {
 			{
-				put("staffno", "1001");
-				put("workCaseId", "2020080500000064215X");
+				put("staffno", "10000");
+				put("workCaseId","CS202009170000014053");
 			}
 		};
 		try {

@@ -24,7 +24,7 @@
 							{"r":new Date().getTime(),"staffno":setAction.staffno,
 								"flowId":setAction.flowId,"nodeId":setAction.nodeId,
 								"ruleId":setAction.ruleId,"ruleType":setAction.ruleType,
-								"opType":setAction.opType,
+								"opType":setAction.opType,"lineId":setAction.lineId,
 								"showParam":_radioValue,
 								"realParam":_paramKey,
 								"orderNo":_orderNo

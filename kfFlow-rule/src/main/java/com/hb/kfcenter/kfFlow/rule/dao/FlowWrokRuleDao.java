@@ -195,11 +195,12 @@ public class FlowWrokRuleDao implements FlowWrokRuleService{
 		return result;
 	}
 
-	private static final String UPDATE_NODERULEPARAM_SQL="UPDATE T_WORKFLOW_RULE_NEW SET PARA1=?, PARA2=? ,PARA3=? WHERE WK_ID=? AND NODE_ID=? AND OPTYPE=? AND RULETYPE=? AND RULEID=?";
+	private static final String UPDATE_NODERULEPARAM_SQL="UPDATE T_WORKFLOW_RULE_NEW SET PARA1=?, PARA2=? ,PARA3=? WHERE WK_ID=? AND NODE_ID=? AND OPTYPE=? AND RULETYPE=? AND RULEID=? AND ORTHER_ID=?";
 	@Override
 	public boolean saveOneRuleParam(String flowId, String nodeId,
 			String ruleId,String opType,String ruleType, String showParam,
-			String realParam,String orderNo) {
+			String realParam,String orderNo,String lineId) {
+		
 		if ( StringUtils.isNotEmpty(flowId) &&
 				StringUtils.isNotEmpty(nodeId) &&
 				StringUtils.isNotEmpty(ruleId) &&
@@ -209,9 +210,10 @@ public class FlowWrokRuleDao implements FlowWrokRuleService{
 				) {
 			jdbcTemplate.update(UPDATE_NODERULEPARAM_SQL,
 					new Object[] {showParam,realParam,orderNo,flowId,nodeId,opType,
-							ruleType,ruleId});
+							ruleType,ruleId,StringUtils.isNotEmpty(lineId)?lineId:" "});
 			return true;
 		}
+		
 		return false;
 	}
 
