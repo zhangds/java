@@ -50,7 +50,7 @@ $(function(){
 			WebUtil.ajax("POST","../FlowRule/deleCurrentRule",
 						{"r":new Date().getTime(),"staffno":ruleIndexPage.runPageInfo.staffno,
 					    "flowId":ruleIndexPage.runPageInfo.flowId ,"nodeId":ruleIndexPage.runPageInfo.nodeId,
-					    "ruleId":_idNo,"opType":ruleIndexPage.runPageInfo.opType},
+					    "ruleId":_idNo,"lineId":ruleIndexPage.runPageInfo.lineId,"opType":ruleIndexPage.runPageInfo.opType},
 					    function(){alert('删除成功!');},true,
 					    this.zTreeFreshNode,function(){alert('删除失败!');});
 		},

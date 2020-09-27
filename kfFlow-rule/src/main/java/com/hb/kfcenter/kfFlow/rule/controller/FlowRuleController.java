@@ -178,10 +178,11 @@ public class FlowRuleController {
 			@RequestParam(defaultValue = "") String flowId,
 			@RequestParam(defaultValue = "") String nodeId,
 			@RequestParam(defaultValue = "") String ruleId,
+			@RequestParam(defaultValue = "") String lineId,
 			@RequestParam(defaultValue = "opType") String opType,
 			Model model) {
 		
-		return flowWrokRuleService.deleCurrentRule(flowId,nodeId,ruleId,opType);
+		return flowWrokRuleService.deleCurrentRule(flowId,nodeId,ruleId,opType,lineId);
 	}
 	
 	@SuppressWarnings("serial")

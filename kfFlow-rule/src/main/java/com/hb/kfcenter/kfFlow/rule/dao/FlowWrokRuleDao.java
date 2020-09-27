@@ -93,19 +93,19 @@ public class FlowWrokRuleDao implements FlowWrokRuleService{
 	
 	private static final String DEL_CURRENT_RULE_SQL = 
 			"DELETE FROM T_WORKFLOW_RULE_NEW WHERE "
-			+ "WK_ID=? AND NODE_ID =? AND OPTYPE =? "
+			+ "WK_ID=? AND NODE_ID =? AND OPTYPE =? AND ORTHER_ID=? "
 			+ "AND RULEID IN (SELECT TO_NCHAR(?) AS RULEID "
 			+ "FROM dual UNION ALL "
 			+ "select RULEID from T_WORKFLOW_RULE_NEW a "
 			+ "where states='00A' AND WK_ID=? AND NODE_ID =? "
-			+ "AND OPTYPE ='ruleNode' start with RULEPID =? "
-			+ "connect by prior RULEID =RULEPID)";
+			+ "AND OPTYPE ='ruleNode' AND ORTHER_ID=? start with RULEPID =? "
+			+ "connect by prior RULEID =RULEPID and ORTHER_ID=ORTHER_ID)";
 	@Override
-	public boolean deleCurrentRule( String flowId, String nodeId, String ruleId, String opType) {
+	public boolean deleCurrentRule( String flowId, String nodeId, String ruleId, String opType,String lineId) {
 		
 		try {
 			jdbcTemplate.update(DEL_CURRENT_RULE_SQL, 
-					new Object[] {flowId,nodeId,opType,ruleId,flowId,nodeId,ruleId});
+					new Object[] {flowId,nodeId,opType,StringUtils.isNotEmpty(lineId)?lineId: " ",ruleId,flowId,nodeId,StringUtils.isNotEmpty(lineId)?lineId: " ",ruleId});
 		} catch (Exception e) {
 			return false;
 		}
