@@ -327,12 +327,16 @@ public class FlowEngineDao implements FlowEngineService {
 							&& IsNumber.isNumeric(ruleBean.getParaThree()) && StringUtils.isNotEmpty(ruleBean.getType()) && ruleBean.getType().toLowerCase().equals("action")).collect(Collectors.toList());
 					if (actions != null && actions.size()>0) {
 						actions.sort((o1,o2) -> Integer.valueOf(o1.getParaThree()) -Integer.valueOf(o2.getParaThree()));
+						boolean _checked = false;
 						for (RuleBean ruleBean :actions) {
-							boolean _checked = helpUtilService.parseToExpression(ruleBean,backFormEleBean.getMuseRules(),jsonMap);
+							_checked = helpUtilService.parseToExpression(ruleBean,backFormEleBean.getMuseRules(),jsonMap);
 							if (_checked) {
 								backFormEleBean.setMuseAble(Boolean.valueOf(ruleBean.getParaTwo()));
+								break;
 							}
 						}
+						if (!_checked)
+							backFormEleBean.setMuseAble(_checked);
 					}
 				}
 			}
