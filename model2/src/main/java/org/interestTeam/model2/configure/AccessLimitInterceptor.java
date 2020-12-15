@@ -37,16 +37,16 @@ public class AccessLimitInterceptor extends HandlerInterceptorAdapter {
            if(accessLimit == null){
                return true;
            }
-           int seconds = accessLimit.seconds();
-           int maxCount = accessLimit.maxCount();
-           boolean login = accessLimit.needLogin();
-           String key = request.getRequestURI();
+			/*
+			 * int seconds = accessLimit.seconds(); int maxCount = accessLimit.maxCount();
+			 * boolean login = accessLimit.needLogin(); String key =
+			 * request.getRequestURI();
+			 */
            //如果需要登录
-           if(login){
-               //获取登录的session进行判断
-               //.....
-               key+=""+"1";  //这里假设用户是1,项目中是动态获取的userId
-           }
+			/*
+			 * if(login){ //获取登录的session进行判断 //..... key+=""+"1"; //这里假设用户是1,项目中是动态获取的userId
+			 * }
+			 */
 
            //从redis中获取用户访问的次数
 //           AccessKey ak = AccessKey.withExpire(seconds);
