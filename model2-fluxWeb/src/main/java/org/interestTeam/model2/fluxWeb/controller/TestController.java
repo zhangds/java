@@ -41,4 +41,14 @@ public class TestController {
 			}});
         return result;
     }
+
+	@GetMapping("/hello")
+	public Mono<String> sayHello() {
+		return Mono.just("Hello, World!");
+	}
+
+	@GetMapping("/numbers")
+	public Flux<Integer> getNumbers() {
+		return Flux.range(1, 10);
+	}
 }
